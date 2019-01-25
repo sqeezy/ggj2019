@@ -8,16 +8,19 @@
 
 #endregion
 
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class MapInput : MonoBehaviour
 {
 	public LayerMask TileLayerMask;
-
+	
 	private Tile SelectedTile;
 
 	public PlayerMovementController PlayerMovement;
+
+	public Tile[] MockWayPointList;
 
 	private void Update()
 	{
@@ -29,12 +32,18 @@ public class MapInput : MonoBehaviour
 				var clickedTile = hit.collider.GetComponent<Tile>();
 				if (SelectedTile == null || SelectedTile != clickedTile)
 				{
+					Debug.Log("SelectedTile");
 					SelectedTile = clickedTile;
+					
 					//TODO: highlight path from WalkOnGrid
 				}
 				else // selected tile == clicked tile
 				{
+					Debug.Log("Move");
 					//TODO: Confirm / trigger movement.
+					//TODO: get path from walk on grid
+					//TODO: give player controller tile-list
+					PlayerMovement.MoveOnPath(MockWayPointList);
 				}
 			}
 		}
