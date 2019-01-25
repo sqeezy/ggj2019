@@ -26,6 +26,11 @@ public class MapInput : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			if (PlayerMovement.HasPath)
+			{
+				// Early out, in case the character is already moving.
+				return;
+			}
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, TileLayerMask))
 			{
