@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7121536914770427189}
   - component: {fileID: 5459985477366157991}
   - component: {fileID: 2587457252358589567}
-  m_Layer: 0
-  m_Name: Tile
+  - component: {fileID: 308926261}
+  m_Layer: 20
+  m_Name: TilePrefabCopyInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,4 +96,17 @@ MonoBehaviour:
   X: 0
   Y: 0
   DiscoveryState: 0
-  Walkable: 1
+  Walkable: 0
+--- !u!65 &308926261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587457252358589566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
