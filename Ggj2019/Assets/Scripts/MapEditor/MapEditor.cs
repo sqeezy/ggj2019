@@ -46,10 +46,10 @@ public class MapEditor : EditorWindow
 
 		if (GUILayout.Button("Apply to selected"))
 		{
-			var tile = Random.Range(0, numberOfTiles);
 			foreach (var selectedTile in Selection.gameObjects)
 			{
-				var newTile = Instantiate(tilesToApply[tile]);
+				var tileId = Random.Range(0, numberOfTiles);
+				var newTile = Instantiate(tilesToApply[tileId]);
 				newTile.transform.position = selectedTile.transform.position;
 			}
 
