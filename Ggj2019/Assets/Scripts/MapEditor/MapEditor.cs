@@ -49,6 +49,7 @@ public class MapEditor : EditorWindow
 				var tileId = Random.Range(0, numberOfTiles);
 				var newTile = Instantiate(tilesToApply[tileId]);
 				newTile.transform.position = selectedTile.transform.position;
+				newTile.transform.SetParent(selectedTile.transform.parent);
 			}
 
 			for (int i = Selection.gameObjects.Length - 1; i >= 0; i--)
