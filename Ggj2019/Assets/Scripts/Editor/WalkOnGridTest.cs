@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace Editor
 {
@@ -56,6 +57,24 @@ namespace Editor
 			WhenGetPathIsCalled();
 
 			ThenResultIs(GridTile(1, 1), GridTile(targetX, targetY));
+		}
+
+//		[Test]
+		public void GetPath_can_find_its_way_around_obstacles()
+		{
+			GivenGrid(3, 3);
+			GivenStart(GridTile(0, 0));
+			GivenTarget(GridTile(2, 2));
+
+			WhenGetPathIsCalled();
+			WhenTileIsObstacle(1,1);
+
+			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2,0), GridTile(2,1), GridTile(2,2));
+		}
+
+		private void WhenTileIsObstacle(int x, int y)
+		{
+			_grid[x, y].Walkable = false;
 		}
 
 		private void ThenResultIs(params Tile[] result)
