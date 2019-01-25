@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using UnityEditor;
 using UnityEngine;
 
@@ -89,6 +87,7 @@ public class MapEditor : EditorWindow
 
 	private void BuildMap()
 	{
+		var parent = new GameObject("Map");
 		var grid = new Tile[xWidth, yWidth];
 		for (var xIndex = 0; xIndex < xWidth; xIndex++)
 		{
@@ -96,6 +95,7 @@ public class MapEditor : EditorWindow
 			{
 				Tile tile = Instantiate(basicTile);
 				tile.transform.position = new Vector3(xIndex, yIndex, 0);
+				tile.transform.SetParent(parent.transform);
 				grid[xIndex, yIndex] = tile;
 			}
 		}
