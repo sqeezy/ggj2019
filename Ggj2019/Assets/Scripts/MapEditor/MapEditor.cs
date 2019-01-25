@@ -59,14 +59,14 @@ public class MapEditor : EditorWindow
 
 		if (GUILayout.Button("Connect"))
 		{
-			Selection.selectionChanged += Connect;
+			Connect();
 		}
 	}
 
 	private void Connect()
 	{
 		Selection.selectionChanged = null;
-		Selection.selectionChanged += UpdateSelection;
+		Selection.selectionChanged = UpdateSelection;
 	}
 
 	private void UpdateSelection()
@@ -75,13 +75,19 @@ public class MapEditor : EditorWindow
 		foreach (var tile in tiles)
 		{
 			var sprite = tile.GetComponent<SpriteRenderer>();
-			sprite.color = Color.white;
+			if (sprite!= null)
+			{
+				sprite.color = Color.white;
+			}
 		}
 
 		foreach (var gameObject in Selection.gameObjects)
 		{
 			var sprite = gameObject.GetComponent<SpriteRenderer>();
-			sprite.color = Color.cyan;
+			if (sprite != null)
+			{
+				sprite.color = Color.cyan;
+			}
 		}
 	}
 
