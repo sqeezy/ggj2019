@@ -33,7 +33,7 @@ namespace Editor
 		{
 			var tile = new GameObject().AddComponent<Tile>();
 
-			_grid = new Tile[1, 1] {{tile}};
+			_grid = new[,] {{tile}};
 			GivenStart(tile);
 			GivenTarget(tile);
 
@@ -55,8 +55,12 @@ namespace Editor
 
 			WhenGetPathIsCalled();
 
-			var expectedResult = new[] {GridTile(1, 1), GridTile(targetX, targetY)};
+			ThenResultIs(GridTile(1, 1), GridTile(targetX, targetY));
+		}
 
+		private void ThenResultIs(params Tile[] result)
+		{
+			var expectedResult = result;
 			CollectionAssert.AreEqual(expectedResult, _result);
 		}
 
