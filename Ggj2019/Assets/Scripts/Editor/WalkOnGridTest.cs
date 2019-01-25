@@ -7,6 +7,10 @@ namespace Editor
     public class WalkOnGridTest
     {
         private WalkOnGrid _sut;
+        private IEnumerable<Tile> _result;
+        private Tile _start;
+        private Tile _target;
+        private Tile[,] _grid;
 
         [SetUp]
         public void Setup()
@@ -17,15 +21,35 @@ namespace Editor
         [Test]
         public void GetPath_finds_the_tile_the_actor_stands_on()
         {
-            var allTheSame = new Tile();
+            var tile = new Tile();
 
-            var grid = new Tile[1, 1] {{allTheSame}};
-            var start = allTheSame;
-            var target = allTheSame;
+            _grid = new Tile[1, 1] {{tile}};
+            GivenStart(tile);
+            GivenTarget(tile);
 
-            IEnumerable<Tile> result = _sut.GetPath(grid, start, target);
+            WhenGetPathIsCalled();
 
-            Assert.AreSame(allTheSame, result.Single());
+            ThenTheSingleResultTileIs(tile);
+        }
+
+        private void GivenTarget(Tile tile)
+        {
+            _target = tile;
+        }
+
+        private void GivenStart(Tile tile)
+        {
+            _start = tile;
+        }
+
+        private void ThenTheSingleResultTileIs(Tile tile)
+        {
+            Assert.AreSame(tile, _result.Single());
+        }
+
+        private void WhenGetPathIsCalled()
+        {
+            _result = _sut.GetPath(_grid, _start, _target);
         }
     }
 }
