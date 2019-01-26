@@ -59,28 +59,38 @@ namespace Editor
 			ThenResultIs(GridTile(1, 1), GridTile(targetX, targetY));
 		}
 
-//		[Test]
+		/// <summary>
+		/// S . .
+		/// X X .
+		/// . . T
+		/// </summary>
+		[Test]
 		public void GetPath_can_find_its_way_around_obstacles()
 		{
 			GivenGrid(3, 3);
 			GivenStart(GridTile(0, 0));
 			GivenTarget(GridTile(2, 2));
+			GivenTileIsObstacle(1, 1);
+			GivenTileIsObstacle(0, 1);
 
 			WhenGetPathIsCalled();
-			WhenTileIsObstacle(1,1);
 
-			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2,0), GridTile(2,1), GridTile(2,2));
+			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2, 0), GridTile(2, 1), GridTile(2, 2));
 		}
 
-		private void WhenTileIsObstacle(int x, int y)
+		private void GivenTileIsObstacle(int x, int y)
 		{
 			_grid[x, y].Walkable = false;
 		}
 
 		private void ThenResultIs(params Tile[] result)
 		{
-			var expectedResult = result;
-			CollectionAssert.AreEqual(expectedResult, _result);
+			Assert.True(result.Length == _result.Count());
+			for (int i = 0; i < result.Length; i++)
+			{
+				var equal = result[i] == _result.ToArray()[i];
+				Assert.True(equal);
+			}
 		}
 
 		private Tile GridTile(int xPos, int yPos)
@@ -98,6 +108,7 @@ namespace Editor
 					_grid[i, j] = new GameObject().AddComponent<Tile>();
 					_grid[i, j].X = i;
 					_grid[i, j].Y = j;
+					_grid[i, j].Walkable = true;
 				}
 			}
 		}
