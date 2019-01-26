@@ -54,7 +54,8 @@ public class PlayerMovementController : Actor
 				targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 				moveDir = (targetPosition - oldTargetPosition).normalized;
 				moveVec = moveDir * distOverflow;
-				transform.position = transform.position = oldTargetPosition + moveVec;
+				var tmp = oldTargetPosition + moveVec;
+				transform.position = new Vector3(tmp.x, tmp.y, -1f);
 			}
 			else
 			{
@@ -72,7 +73,8 @@ public class PlayerMovementController : Actor
 				targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 				moveDir = (targetPosition - oldTargetPosition).normalized;
 				moveVec = moveDir * Speed * Time.deltaTime;
-				transform.position = transform.position = oldTargetPosition + moveVec;
+				var tmp = oldTargetPosition + moveVec;
+				transform.position = new Vector3(tmp.x, tmp.y, -1f);
 			}
 			else
 			{
@@ -81,13 +83,17 @@ public class PlayerMovementController : Actor
 		}
 		else
 		{
-			transform.position = transform.position + new Vector3(moveVec.x, moveVec.y, 0.0f);
+			var tmp = transform.position + new Vector3(moveVec.x, moveVec.y, 0.0f);
+			tmp.z = -1.0f;
+			transform.position = tmp;
 		}
 	}
 
 	private void FinishMovement(Vector2 targetPosition)
 	{
-		transform.position = targetPosition;
+		var tmp = new Vector3(targetPosition.x, targetPosition.y);
+		tmp.z = -1f;
+		transform.position = tmp;
 		HasPath = false;
 		MovementFinished.Raise();
 	}
