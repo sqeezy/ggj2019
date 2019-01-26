@@ -34,7 +34,6 @@ public class GameState : MonoBehaviour
 		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
 		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
 		CurrentEnergy = StartEnergy;
-		ActiveActor.EnergyConsumed += ReduceEnergy;
 	}
 
 	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
@@ -83,8 +82,14 @@ public class GameState : MonoBehaviour
 		}
 		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
-			ActiveActor.Deselect();
+			if (ActiveActor != null)
+			{
+				ActiveActor.EnergyConsumed -= ReduceEnergy;
+				ActiveActor.Deselect();
+			}
+
 			ActiveActor = actor;
+			ActiveActor.EnergyConsumed += ReduceEnergy;
 		}
 	}
 

@@ -16,9 +16,9 @@ namespace DefaultNamespace
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<Tile>() is Tile tile)
+			if (other.GetComponent<Revealable>() is Revealable rev)
 			{
-				tile.Reveal();
+				rev.Reveal();
 			}
 		}
 	}
