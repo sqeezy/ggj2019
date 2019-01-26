@@ -18,7 +18,7 @@ namespace DefaultNamespace
 		{
 			if (other.GetComponent<Tile>() is Tile tile)
 			{
-				tile.DiscoveryState = DiscoveryState.Visible;
+				tile.Reveal();
 			}
 		}
 	}
