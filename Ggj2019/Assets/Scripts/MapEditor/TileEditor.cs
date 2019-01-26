@@ -25,6 +25,7 @@ public class TileEditor : Editor
 		ClearSelection();
 
 		SceneView.onSceneGUIDelegate += this.OnSceneMouseOver;
+		Selection.selectionChanged += ClearSelection;
 	}
 
 	private void ClearSelection()
@@ -87,6 +88,9 @@ public class TileEditor : Editor
 		Event e = Event.current;
 		switch (e.type)
 		{
+			case EventType.MouseDown:
+				ClearSelection();
+				break;
 			case EventType.KeyDown:
 				if (Event.current.keyCode == (KeyCode.A))
 				{
