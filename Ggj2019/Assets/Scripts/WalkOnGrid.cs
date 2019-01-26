@@ -9,6 +9,7 @@ public class WalkOnGrid : MonoBehaviour
 
 	private void Start()
 	{
+		Map.Load();
 		Grid = Map.Grid;
 	}
 

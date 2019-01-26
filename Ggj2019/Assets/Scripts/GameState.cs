@@ -13,8 +13,6 @@ public class GameState : MonoBehaviour
 	public MapInput Input;
 	public Map MapState;
 
-	public GameObject SelectedObject;
-
 	public Tile SelectedTile
 	{
 		get => _selectedTile;
