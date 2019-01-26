@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMovementController : Actor
 {
 	private bool _hasPath;
-
 	private (int, int) _position;
+
+	public bool BlocksMovement;
 	private int NextWayPointIndex;
+	protected bool OriginalWalkable;
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
@@ -29,6 +31,7 @@ public class PlayerMovementController : Actor
 	{
 	}
 
+
 	protected virtual void Start()
 	{
 		base.Start();
@@ -36,6 +39,8 @@ public class PlayerMovementController : Actor
 		pos.z = -1f;
 		transform.position = pos;
 		PositionTile = StartPosition;
+		OriginalWalkable = PositionTile.Walkable;
+		PositionTile.Walkable = !BlocksMovement;
 	}
 
 	public void SetPosition(Tile newPosition)

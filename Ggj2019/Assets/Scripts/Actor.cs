@@ -19,6 +19,7 @@ public class Actor : Revealable
 	{
 	}
 
+
 	public virtual void TargetClicked(Tile target)
 	{
 	}
