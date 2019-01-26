@@ -1,32 +1,33 @@
+#region
+
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+
+#endregion
 
 namespace Editor
 {
 	public class WalkOnGridTest
 	{
-		private WalkOnGrid _sut;
+		private Tile[,] _grid;
 		private IEnumerable<Tile> _result;
 		private Tile _start;
+		private WalkOnGrid _sut;
 		private Tile _target;
-		private Tile[,] _grid;
 
 		[SetUp]
 		public void Setup()
 		{
-			_sut = new WalkOnGrid();
+			_sut = new GameObject().AddComponent<WalkOnGrid>();
 		}
 
 		[TearDown]
 		public void Teardown()
 		{
-			foreach (var tile in _grid)
-			{
-				GameObject.DestroyImmediate(tile.gameObject);
-			}
+			GameObject.DestroyImmediate(_sut.gameObject);
+			foreach (var tile in _grid) GameObject.DestroyImmediate(tile.gameObject);
 		}
 
 		[Test]
@@ -100,17 +101,70 @@ namespace Editor
 				GridTile(0, 2));
 		}
 
+		/// <summary>
+		/// S 1 2 3 4
+		/// 1 X X X 5
+		/// 2 X T X 6
+		/// </summary>
+		[Test]
+		public void GetPath_finds_the_nearest_reachable_tile()
+		{
+			GivenGrid(5, 3);
+			GivenStart(GridTile(0, 0));
+			GivenTarget(GridTile(2, 2));
+
+			GivenTileIsObstacle(1, 2);
+			GivenTileIsObstacle(1, 1);
+			GivenTileIsObstacle(2, 1);
+			GivenTileIsObstacle(3, 1);
+			GivenTileIsObstacle(3, 2);
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(0, 0), GridTile(0, 1), GridTile(0, 2));
+		}
+
+		[Test]
+		public void GetPath_can_stay_on_start_when_nothing_is_reachable()
+		{
+			GivenGrid(2, 1);
+			GivenStart(GridTile(1, 0));
+			GivenTarget(GridTile(0, 0));
+
+			GivenTileIsObstacle(0, 0);
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(1, 0));
+		}
+
+		[Test]
+		public void GetPath_doesnt_leave_start_when_its_nearest_reachable_target()
+		{
+			GivenGrid(2, 2);
+			GivenStart(GridTile(0, 1));
+
+			GivenTileIsObstacle(0, 0);
+			GivenTarget(GridTile(0, 0));
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(0, 1));
+		}
+
 		private void GivenTileIsObstacle(int x, int y)
 		{
 			_grid[x, y].Walkable = false;
 		}
 
-		private void ThenResultIs(params Tile[] result)
+		private void ThenResultIs(params Tile[] expectedPath)
 		{
-			Assert.True(result.Length == _result.Count());
-			for (int i = 0; i < result.Length; i++)
+			Assert.True(expectedPath.Length == _result.Count(),
+				$"Got length {_result.Count()}, expected {expectedPath.Length}");
+
+			for (var i = 0; i < expectedPath.Length; i++)
 			{
-				var equal = result[i] == _result.ToArray()[i];
+				var equal = expectedPath[i] == _result.ToArray()[i];
 				Assert.True(equal);
 			}
 		}
@@ -123,15 +177,13 @@ namespace Editor
 		private void GivenGrid(int x, int y)
 		{
 			_grid = new Tile[x, y];
-			for (int i = 0; i < x; i++)
+			for (var i = 0; i < x; i++)
+			for (var j = 0; j < y; j++)
 			{
-				for (int j = 0; j < y; j++)
-				{
-					_grid[i, j] = new GameObject().AddComponent<Tile>();
-					_grid[i, j].X = i;
-					_grid[i, j].Y = j;
-					_grid[i, j].Walkable = true;
-				}
+				_grid[i, j] = new GameObject().AddComponent<Tile>();
+				_grid[i, j].X = i;
+				_grid[i, j].Y = j;
+				_grid[i, j].Walkable = true;
 			}
 		}
 
@@ -152,7 +204,8 @@ namespace Editor
 
 		private void WhenGetPathIsCalled()
 		{
-			_result = _sut.GetPath(_grid, _start, _target);
+			_sut.Grid = _grid;
+			_result = _sut.GetPath(_start, _target);
 		}
 	}
 }
