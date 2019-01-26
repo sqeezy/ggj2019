@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 42703109}
   - component: {fileID: 42703110}
   - component: {fileID: 5802249508447347026}
+  - component: {fileID: 8842067941447956185}
   m_Layer: 19
   m_Name: Cowboy
   m_TagString: Untagged
@@ -81,15 +82,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a414b596e77014b914c6f95786bfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicAbility: {fileID: 42703110}
+  PrimaryAbility: {fileID: 42703110}
   SecondaryAbility: {fileID: 5802249508447347026}
+  TertiaryAbility: {fileID: 8842067941447956185}
   WalkOnGrid: {fileID: 0}
   Speed: 1
   StartPosition: {fileID: 0}
+  AnimationController: {fileID: 8581749601340397818}
+  CarriedPickupableActor: {fileID: 0}
+  CurrentEnergy: 0
   FullEnergy: 0
   MaxEnergy: 0
-  CurrentEnergy: 0
-  AnimationController: {fileID: 8581749601340397818}
 --- !u!114 &42703110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +121,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyAmount: 0
-  ActiveItem: {fileID: 0}
+--- !u!114 &8842067941447956185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245212956927963700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62be240be18148e1a34876bf288a0f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyAmount: 0
 --- !u!1 &8800075111236936992
 GameObject:
   m_ObjectHideFlags: 0

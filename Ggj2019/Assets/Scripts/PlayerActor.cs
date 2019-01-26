@@ -1,18 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-
-public class PlayerActor : PlayerMovementController
+﻿public class PlayerActor : PlayerMovementController
 {
+	public CharacterAnimation AnimationController;
+	public PickupableActor CarriedPickupableActor;
+	public int CurrentEnergy;
 	public int FullEnergy;
 	public int MaxEnergy;
-	public int CurrentEnergy;
-	public PickupableActor CarriedPickupableActor = null;
-	public CharacterAnimation AnimationController;
 
 	protected override void OnHasPathUpdated()
 	{
 		base.OnHasPathUpdated();
-		
+
 		if (HasPath)
 		{
 			AnimationController.Move();

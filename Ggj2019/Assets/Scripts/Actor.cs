@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Actor : Revealable
 {
-	public event Action<int> EnergyConsumed = (t) => { };
-
-	delegate void ArrivedAtTargetObjectCallback(GameObject targetObject);
-
-	public Ability BasicAbility;
+	public Ability PrimaryAbility;
 
 	public Ability SecondaryAbility;
+
+	public Ability TertiaryAbility;
 
 	public WalkOnGrid WalkOnGrid;
 
 	public IEnumerable<Tile> Path { get; protected set; }
+	public event Action<int> EnergyConsumed = t => { };
 
 	public virtual void Deselect()
 	{
@@ -33,7 +32,7 @@ public class Actor : Revealable
 		EnergyConsumed(amount);
 	}
 
-	public void ActivateBasicAbility(PlayerActor activeActor, GameObject targetObject)
+	public void ActivatePrimaryAbility(PlayerActor activeActor, GameObject targetObject)
 	{
 		MoveToTargetObjectThenActivateAbility(activeActor, PrimaryAbilityOnMovementFinished, targetObject);
 	}
@@ -43,20 +42,28 @@ public class Actor : Revealable
 		MoveToTargetObjectThenActivateAbility(activeActor, SecondaryAbilityOnMovementFinished, targetObject);
 	}
 
-	private void MoveToTargetObjectThenActivateAbility(PlayerActor activeActor, ArrivedAtTargetObjectCallback callbackOnMovementFinished, GameObject targetObject)
+	public void ActivateTertiaryAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, TertiaryAbilityOnMovementFinished, targetObject);
+	}
+
+	private void MoveToTargetObjectThenActivateAbility(PlayerActor activeActor,
+	                                                   ArrivedAtTargetObjectCallback callbackOnMovementFinished,
+	                                                   GameObject targetObject)
 	{
 		if (activeActor is PlayerMovementController movementActor)
 		{
-			var targetTile = activeActor.WalkOnGrid.Grid[(int)targetObject.transform.position.x, (int)targetObject.transform.position.y];
+			var targetTile = activeActor.WalkOnGrid.Grid[(int) targetObject.transform.position.x,
+			                                             (int) targetObject.transform.position.y];
 			activeActor.TargetClicked(targetTile);
 			activeActor.TargetConfirmed(targetTile);
 
 			Action handler = null;
 			handler = () =>
-			{
-				callbackOnMovementFinished(targetObject);
-				movementActor.MovementFinished -= handler;
-			};
+			          {
+				          callbackOnMovementFinished(targetObject);
+				          movementActor.MovementFinished -= handler;
+			          };
 
 			movementActor.MovementFinished += handler;
 		}
@@ -64,10 +71,10 @@ public class Actor : Revealable
 
 	private void PrimaryAbilityOnMovementFinished(GameObject targetObject)
 	{
-		if (BasicAbility != null)
+		if (PrimaryAbility != null)
 		{
-			BasicAbility.Do(targetObject);
-			ConsumeEnergy(BasicAbility.EnergyAmount);
+			PrimaryAbility.Do(targetObject);
+			ConsumeEnergy(PrimaryAbility.EnergyAmount);
 		}
 	}
 
@@ -76,7 +83,18 @@ public class Actor : Revealable
 		if (SecondaryAbility != null)
 		{
 			SecondaryAbility.Do(targetObject);
-			ConsumeEnergy((SecondaryAbility.EnergyAmount));
+			ConsumeEnergy(SecondaryAbility.EnergyAmount);
 		}
 	}
+
+	private void TertiaryAbilityOnMovementFinished(GameObject targetObject)
+	{
+		if (TertiaryAbility != null)
+		{
+			TertiaryAbility.Do(targetObject);
+			ConsumeEnergy(SecondaryAbility.EnergyAmount);
+		}
+	}
+
+	private delegate void ArrivedAtTargetObjectCallback(GameObject targetObject);
 }

@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimation : MonoBehaviour
 {
 	public Animator AnimationController;
 
-	[Serializable]
-	public struct AnimationNames
-	{
-		public string BasicAbility;
-		public string SecondaryAbility;
-		public string Move;
-		public string Idle;
-	}
-
 	public AnimationNames AnimationData;
+
 	public void Move()
 	{
 		AnimationController.SetTrigger(AnimationData.Move);
@@ -38,5 +28,14 @@ public class CharacterAnimation : MonoBehaviour
 		AnimationController.ResetTrigger(AnimationData.Idle);
 		AnimationController.ResetTrigger(AnimationData.BasicAbility);
 		AnimationController.ResetTrigger(AnimationData.SecondaryAbility);
+	}
+
+	[Serializable]
+	public struct AnimationNames
+	{
+		public string BasicAbility;
+		public string SecondaryAbility;
+		public string Move;
+		public string Idle;
 	}
 }

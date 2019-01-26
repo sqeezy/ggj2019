@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Tile : Revealable
+﻿public class Tile : Revealable
 {
 	public bool Walkable;
 	public int X;

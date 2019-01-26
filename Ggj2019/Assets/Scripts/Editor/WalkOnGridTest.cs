@@ -93,8 +93,13 @@ namespace Editor
 
 			WhenGetPathIsCalled();
 
-			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2, 0), GridTile(2, 1), GridTile(2, 2), GridTile(1, 2),
-				GridTile(0, 2));
+			ThenResultIs(GridTile(0, 0),
+			             GridTile(1, 0),
+			             GridTile(2, 0),
+			             GridTile(2, 1),
+			             GridTile(2, 2),
+			             GridTile(1, 2),
+			             GridTile(0, 2));
 		}
 
 		/// <summary>
@@ -156,7 +161,7 @@ namespace Editor
 		private void ThenResultIs(params Tile[] expectedPath)
 		{
 			Assert.True(expectedPath.Length == _result.Count(),
-				$"Got length {_result.Count()}, expected {expectedPath.Length}");
+			            $"Got length {_result.Count()}, expected {expectedPath.Length}");
 
 			for (var i = 0; i < expectedPath.Length; i++)
 			{

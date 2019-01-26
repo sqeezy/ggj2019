@@ -33,7 +33,18 @@ public class GameState : MonoBehaviour
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
 		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
+		Input.DropActionCalled += InputDropActionCalled;
 		CurrentEnergy = StartEnergy;
+	}
+
+	private void InputDropActionCalled()
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivateTertiaryAbility(ActiveActor, ActiveActor.PositionTile.gameObject);
 	}
 
 	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
@@ -58,7 +69,7 @@ public class GameState : MonoBehaviour
 			return;
 		}
 
-		ActiveActor.ActivateBasicAbility(ActiveActor, obj);
+		ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)

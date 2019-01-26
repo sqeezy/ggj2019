@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class PlayerMovementController : Actor
 {
+	private bool _hasPath;
 
-	public event Action MovementFinished;
-	
 	private (int, int) _position;
-	public Tile PositionTile { get; protected set; }
 	private int NextWayPointIndex;
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
-	private bool _hasPath; 
-	public bool HasPath {
-		get { return _hasPath; }
-		private set { _hasPath = value;
+	public Tile PositionTile { get; protected set; }
+
+	public bool HasPath
+	{
+		get => _hasPath;
+		private set
+		{
+			_hasPath = value;
 			OnHasPathUpdated();
 		}
 	}
+
+	public event Action MovementFinished;
 
 	protected virtual void OnHasPathUpdated()
 	{
@@ -32,6 +36,11 @@ public class PlayerMovementController : Actor
 		pos.z = -1f;
 		transform.position = pos;
 		PositionTile = StartPosition;
+	}
+
+	public void SetPosition(Tile newPosition)
+	{
+		transform.position = new Vector3(newPosition.X, newPosition.Y, -1f);
 	}
 
 	// Update is called once per frame
@@ -49,7 +58,7 @@ public class PlayerMovementController : Actor
 		var scale = transform.localScale;
 		if (moveDir.x < 0)
 		{
-			scale.x = -1; 
+			scale.x = -1;
 		}
 		else
 		{
@@ -152,7 +161,6 @@ public class PlayerMovementController : Actor
 		HighlightPath(false);
 		Path = WalkOnGrid.GetPath(PositionTile, target);
 		HighlightPath(true);
-
 	}
 
 	private void HighlightPath(bool highlight)

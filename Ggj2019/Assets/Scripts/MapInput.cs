@@ -17,7 +17,9 @@ public class MapInput : MonoBehaviour
 	public event Action<GameObject> GameObjectPushActionCalled;
 
 	public event Action<GameObject> GameObjectPickUpActionCalled;
-	
+
+	public event Action DropActionCalled;
+
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -42,6 +44,11 @@ public class MapInput : MonoBehaviour
 			{
 				GameObjectPickUpActionCalled.Raise(hit.collider.gameObject);
 			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			DropActionCalled.Raise();
 		}
 	}
 }
