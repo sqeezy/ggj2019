@@ -1,10 +1,6 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Linq;
 using UnityEngine;
-
-#endregion
 
 public class PlayerMovementController : Actor
 {

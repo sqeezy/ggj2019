@@ -1,9 +1,5 @@
-#region
-
 using System;
 using UnityEngine;
-
-#endregion
 
 public class GameState : MonoBehaviour
 {
