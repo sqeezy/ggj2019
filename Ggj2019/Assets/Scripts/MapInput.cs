@@ -1,19 +1,11 @@
-﻿#region FileHeader
-
-// File: PlayerController.cs
+﻿// File: PlayerController.cs
 // Project: Divisor - HAW Math Games 
 // Author: Konstantin Rudolph
 // Creation Date: 22:02, 25.01.2019
 // Last Edit: 22:21, 25.01.2019 by Konstantin Rudolph
 
-#endregion
-
-#region
-
 using System;
 using UnityEngine;
-
-#endregion
 
 [RequireComponent(typeof(Camera))]
 public class MapInput : MonoBehaviour

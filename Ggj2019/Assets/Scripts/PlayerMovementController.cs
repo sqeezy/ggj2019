@@ -1,10 +1,6 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Linq;
 using UnityEngine;
-
-#endregion
 
 public class PlayerMovementController : Actor
 {
@@ -17,7 +13,18 @@ public class PlayerMovementController : Actor
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
-	public bool HasPath { get; private set; }
+	private bool _hasPath; 
+	public bool HasPath {
+		get { return _hasPath; }
+		private set { _hasPath = value;
+			OnHasPathUpdated();
+		}
+	}
+
+	protected virtual void OnHasPathUpdated()
+	{
+		
+	}
 
 	protected virtual void Start()
 	{
