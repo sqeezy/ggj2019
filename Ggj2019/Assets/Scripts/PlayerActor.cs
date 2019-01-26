@@ -6,6 +6,7 @@ public class PlayerActor : PlayerMovementController
 	public int FullEnergy;
 	public int MaxEnergy;
 	public int CurrentEnergy;
+	public PickupableActor CarriedPickupableActor = null;
 	public CharacterAnimation AnimationController;
 
 	protected override void OnHasPathUpdated()
