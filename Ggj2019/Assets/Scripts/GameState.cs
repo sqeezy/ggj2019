@@ -7,11 +7,11 @@ public class GameState : MonoBehaviour
 	public PlayerActor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
-	
-	public int StartEnergy; 
+
+	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
 
-	
+
 	public Tile SelectedTile
 	{
 		get => _selectedTile;
@@ -33,7 +33,6 @@ public class GameState : MonoBehaviour
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectActionCalled += InputOnGameObjectActionCalled;
 		CurrentEnergy = StartEnergy;
-		ActiveActor.EnergyConsumed += ReduceEnergy;
 	}
 
 	private void ReduceEnergy(int amount)
@@ -46,11 +45,9 @@ public class GameState : MonoBehaviour
 		if (ActiveActor == null)
 		{
 			return;
-
 		}
 
 		ActiveActor.ActivateBasicAbility(ActiveActor, obj);
-
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)
@@ -74,8 +71,14 @@ public class GameState : MonoBehaviour
 		}
 		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
-			ActiveActor.Deselect();
+			if (ActiveActor != null)
+			{
+				ActiveActor.EnergyConsumed -= ReduceEnergy;
+				ActiveActor.Deselect();
+			}
+
 			ActiveActor = actor;
+			ActiveActor.EnergyConsumed += ReduceEnergy;
 		}
 	}
 
