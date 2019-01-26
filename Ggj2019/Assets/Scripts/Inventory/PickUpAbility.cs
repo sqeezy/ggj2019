@@ -11,7 +11,9 @@ public class PickUpAbility : Ability
 			if (pickupable != null)
 			{
 				pickupable.PositionTile.Walkable = true;
+				pickupable.gameObject.SetActive(false);
 				GetComponent<PlayerActor>().CarriedPickupableActor = pickupable;
+
 				//TODO: hide gameobject, make tile walkable, trigger animation...
 			}
 		}
