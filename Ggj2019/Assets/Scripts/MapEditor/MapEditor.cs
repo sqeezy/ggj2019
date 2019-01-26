@@ -106,7 +106,7 @@ public class MapEditor : EditorWindow
 		if(GUILayout.Button("Validate")){
 			
 			var tiles = _map.GetComponentsInChildren<Tile>();
-			var testGrid = new Tile[_xWidth.,_yWidth];
+			var testGrid = new Tile[_xWidth,_yWidth];
 			var selectedTile = new List<GameObject>();
 			foreach(var tile in tiles)
 			{
