@@ -31,4 +31,12 @@ public class CharacterAnimation : MonoBehaviour
 	{
 		AnimationController.SetTrigger(AnimationData.BasicAbility);
 	}
+
+	public void Reset()
+	{
+		AnimationController.ResetTrigger(AnimationData.Move);
+		AnimationController.ResetTrigger(AnimationData.Idle);
+		AnimationController.ResetTrigger(AnimationData.BasicAbility);
+		AnimationController.ResetTrigger(AnimationData.SecondaryAbility);
+	}
 }
