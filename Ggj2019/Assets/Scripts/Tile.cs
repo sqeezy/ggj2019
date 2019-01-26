@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
+[Serializable]
 public class Tile : MonoBehaviour
 {
     public int X;
@@ -12,15 +12,7 @@ public class Tile : MonoBehaviour
 
     public bool Walkable;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    public override string ToString() => $"({X} | {Y})";
 }
 
 public enum DiscoveryState
