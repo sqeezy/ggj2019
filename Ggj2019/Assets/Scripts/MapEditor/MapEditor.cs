@@ -76,17 +76,22 @@ public class MapEditor : EditorWindow
 		GUILayout.EndHorizontal();
 		
 
-		if (GUILayout.Button("Connect"))
+		if (GUILayout.Button("SetWalkable"))
 		{
-			Connect();
+			foreach (var selectedObject in TileEditor._selectedObjects)
+			{
+				selectedObject.Walkable = true;
+			}
 		}
 		
-	}
-
-	private void Connect()
-	{
-		Selection.selectionChanged = null;
-		Selection.selectionChanged = UpdateSelection;
+		if (GUILayout.Button("Set Not Walkable"))
+		{
+			foreach (var selectedObject in TileEditor._selectedObjects)
+			{
+				selectedObject.Walkable = false;
+			}
+		}
+		
 	}
 
 	private void UpdateSelection()
@@ -137,7 +142,7 @@ public class MapEditor : EditorWindow
 		{
 			for (var yIndex = 0; yIndex < _yWidth; yIndex++)
 			{
-				Tile tile = Instantiate(_basicTile);
+				var tile = PrefabUtility.InstantiatePrefab(_basicTile as Tile) as Tile;
 				tile.transform.position = new Vector3(xIndex, yIndex, 0);
 				tile.transform.SetParent(parent.transform);
 				tile.X = xIndex;

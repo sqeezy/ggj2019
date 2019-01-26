@@ -18,7 +18,7 @@ public class TileEditor : Editor
 
 	private PaintMode _mode;
 
-	private HashSet<Tile> _selectedObjects = new HashSet<Tile>();
+	public static HashSet<Tile> _selectedObjects = new HashSet<Tile>();
 
 	void OnEnable()
 	{
@@ -99,6 +99,12 @@ public class TileEditor : Editor
 				break;
 
 			case EventType.KeyUp:
+				if (Event.current.keyCode == KeyCode.Escape)
+				{
+					ClearSelection();
+					return;
+				}
+
 				if (Event.current.keyCode == (KeyCode.A) || Event.current.keyCode == KeyCode.S)
 				{
 					_mode = PaintMode.None;
@@ -118,7 +124,7 @@ public class TileEditor : Editor
 						{
 							var choosen = Random.Range(0, activeList.Count-1);
 							var targetTile = activeList[choosen];
-							var newTile = Instantiate(targetTile);
+							var newTile = PrefabUtility.InstantiatePrefab(targetTile as Tile) as Tile;
 							newTile.transform.position = selectedTile.transform.position;
 							newTile.transform.SetParent(selectedTile.transform.parent);
 							MapEditor.ReplaceTile(selectedTile, newTile);
