@@ -8,31 +8,29 @@
 
 #endregion
 
-using System.Collections.Generic;
+#region
+
 using UnityEngine;
+
+#endregion
 
 [RequireComponent(typeof(Camera))]
 public class MapInput : MonoBehaviour
 {
-	public LayerMask TileLayerMask;
-
-	private Tile SelectedTile;
-
-	public PlayerMovementController PlayerMovement;
+	private readonly WalkOnGrid _walker = new WalkOnGrid();
 
 	public Map ActiveMap;
 
-	private WalkOnGrid _walker = new WalkOnGrid();
+	public PlayerMovementController PlayerMovement;
+
+	private Tile SelectedTile;
+	public LayerMask TileLayerMask;
 
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (PlayerMovement.HasPath)
-			{
-				// Early out, in case the character is already moving.
-				return;
-			}
+			if (PlayerMovement.HasPath) return;
 
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, TileLayerMask))
