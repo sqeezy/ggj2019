@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2587457252358589567}
   - component: {fileID: 308926261}
   m_Layer: 20
-  m_Name: TileTemplate
+  m_Name: snow3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,12 +70,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f01f91362183f5449f03073a86c73da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5195ab898cf48cd448c38ce0ed0046d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
