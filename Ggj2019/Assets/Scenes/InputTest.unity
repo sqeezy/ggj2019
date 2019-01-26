@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4140,7 +4140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b9b82e6836b6847912f53fd32f9a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveActor: {fileID: 906940052}
+  ActiveActor: {fileID: 0}
   Input: {fileID: 534669906}
   MapState: {fileID: 1370062956}
   StartEnergy: 0
@@ -5352,36 +5352,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3131093702975250633, guid: 33179242422a143438d1235ea7044466,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: WalkOnGrid
+      value: 
+      objectReference: {fileID: 1844198384}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: StartPosition
+      value: 
+      objectReference: {fileID: 1341944401}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33179242422a143438d1235ea7044466, type: 3}
---- !u!1 &906940051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5245212956927963700, guid: 33179242422a143438d1235ea7044466,
-    type: 3}
-  m_PrefabInstance: {fileID: 906940050}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &906940052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906940051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a414b596e77014b914c6f95786bfa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BasicAbility: {fileID: 0}
-  WalkOnGrid: {fileID: 1844198384}
-  Speed: 1
-  StartPosition: {fileID: 1236263912}
-  AnimationController: {fileID: 0}
 --- !u!1001 &925770237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7882,18 +7862,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1236263910}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1236263912 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2587457252358589567, guid: f2bb138ae01df564f981860d465cfced,
-    type: 3}
-  m_PrefabInstance: {fileID: 1236263910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952756a92182eb5439dbb78fed3df8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1244626490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8324,6 +8292,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1337180509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1341944401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2587457252358589567, guid: f2bb138ae01df564f981860d465cfced,
+    type: 3}
+  m_PrefabInstance: {fileID: 1004797668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952756a92182eb5439dbb78fed3df8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1360110423
 PrefabInstance:
   m_ObjectHideFlags: 0
