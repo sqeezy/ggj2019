@@ -6,13 +6,16 @@ using UnityEngine;
 #endregion
 
 public class GameState : MonoBehaviour
-
 {
 	private Tile _selectedTile;
 	public Actor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
+	
+	public int StartEnergy; 
+	public int CurrentEnergy { get; set; }
 
+	
 	public Tile SelectedTile
 	{
 		get => _selectedTile;
@@ -32,6 +35,13 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
+		CurrentEnergy = StartEnergy;
+		ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void ReduceEnergy(int amount)
+	{
+		CurrentEnergy -= amount;
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)
