@@ -9,11 +9,9 @@ public class PlayerMovementController : Actor
 
 	public bool BlocksMovement;
 	private int NextWayPointIndex;
-	protected bool OriginalWalkable;
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
-	public Tile PositionTile { get; protected set; }
 
 	public bool HasPath
 	{
@@ -39,13 +37,13 @@ public class PlayerMovementController : Actor
 		pos.z = -1f;
 		transform.position = pos;
 		PositionTile = StartPosition;
-		OriginalWalkable = PositionTile.Walkable;
 		PositionTile.Walkable = !BlocksMovement;
 	}
 
 	public void SetPosition(Tile newPosition)
 	{
 		transform.position = new Vector3(newPosition.X, newPosition.Y, -1f);
+		PositionTile = newPosition;
 	}
 
 	// Update is called once per frame
