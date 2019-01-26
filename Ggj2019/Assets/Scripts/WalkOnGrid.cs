@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿#region
+
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+#endregion
+
 public class WalkOnGrid : MonoBehaviour
 {
-	public Map Map;
 	public Tile[,] Grid;
+	public Map Map;
 
 	private void Start()
 	{
@@ -21,7 +25,7 @@ public class WalkOnGrid : MonoBehaviour
 		}
 
 		var allTiles = Grid.Flatten().ToArray();
-		var distances = allTiles.ToDictionary(t => t, l => int.MaxValue);
+		var distances = allTiles.ToDictionary(t => t, l => 100_000);
 		var bestPrev = allTiles.ToDictionary(t => t, l => (Tile) null);
 		var stillToVisit = new HashSet<Tile>(allTiles);
 		distances[start] = 0;
@@ -35,28 +39,49 @@ public class WalkOnGrid : MonoBehaviour
 			var distCandidate = nodeDistance + 1;
 
 			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(Grid).Intersect(stillToVisit))
-			{
 				if (distances[neighbor] > distCandidate)
 				{
 					distances[neighbor] = distCandidate;
 					bestPrev[neighbor] = nodeWithShortestDistance;
 				}
-			}
 		}
 
-		var currentTile = target;
 		var result = new List<Tile>();
-		if (bestPrev[currentTile] != null || currentTile == start)
+
+		var targetReached = bestPrev[target] != null;
+		if (targetReached)
 		{
-			while (currentTile != null)
-			{
-				result.Add(currentTile);
-				currentTile = bestPrev[currentTile];
-			}
+			result = BacktrackFromTarget(target, bestPrev);
+		}
+		else
+		{
+			var hitTilesNearestToTarget = bestPrev.Where(l => l.Value != null)
+				.GroupBy(h => Distance(h.Key, target)).OrderBy(g => g.Key).First();
+			var nearTargetHitWithBestWayToStart =
+				hitTilesNearestToTarget.OrderBy(l => distances[l.Key]).FirstOrDefault();
+			result = BacktrackFromTarget(nearTargetHitWithBestWayToStart.Key, bestPrev);
 		}
 
 		result.Reverse();
 
 		return result;
+	}
+
+	private static float Distance(Tile t1, Tile t2)
+	{
+		return (new Vector2Int(t1.X, t1.Y) - new Vector2Int(t2.X, t2.Y)).magnitude;
+	}
+
+	private static List<Tile> BacktrackFromTarget(Tile target, Dictionary<Tile, Tile> bestPrev)
+	{
+		var r = new List<Tile>();
+		var currentTile = target;
+		while (currentTile != null)
+		{
+			r.Add(currentTile);
+			currentTile = bestPrev[currentTile];
+		}
+
+		return r;
 	}
 }
