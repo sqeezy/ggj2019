@@ -1,9 +1,5 @@
-#region
-
 using System;
 using UnityEngine;
-
-#endregion
 
 public class GameState : MonoBehaviour
 {
@@ -11,11 +7,11 @@ public class GameState : MonoBehaviour
 	public PlayerActor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
-	
-	public int StartEnergy; 
+
+	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
 
-	
+
 	public Tile SelectedTile
 	{
 		get => _selectedTile;
@@ -35,9 +31,20 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
-		Input.GameObjectActionCalled += InputOnGameObjectActionCalled;
+		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
+		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
 		CurrentEnergy = StartEnergy;
 		ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
 	}
 
 	private void ReduceEnergy(int amount)
@@ -45,16 +52,14 @@ public class GameState : MonoBehaviour
 		CurrentEnergy -= amount;
 	}
 
-	private void InputOnGameObjectActionCalled(GameObject obj)
+	private void InputOnGameObjectPushActionCalled(GameObject obj)
 	{
 		if (ActiveActor == null)
 		{
 			return;
-
 		}
 
 		ActiveActor.ActivateBasicAbility(ActiveActor, obj);
-
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)

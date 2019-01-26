@@ -6,8 +6,12 @@ public class Actor : MonoBehaviour
 {
 	public event Action<int> EnergyConsumed = (t) => { };
 
+	delegate void ArrivedAtTargetObjectCallback(GameObject targetObject);
+
 	public Ability BasicAbility;
-	
+
+	public Ability SecondaryAbility;
+
 	public WalkOnGrid WalkOnGrid;
 
 	public IEnumerable<Tile> Path { get; protected set; }
@@ -29,7 +33,17 @@ public class Actor : MonoBehaviour
 		EnergyConsumed(amount);
 	}
 
-	public void ActivateBasicAbility(Actor activeActor, GameObject targetObject)
+	public void ActivateBasicAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, PrimaryAbilityOnMovementFinished, targetObject);
+	}
+
+	public void ActivateSecondaryAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, SecondaryAbilityOnMovementFinished, targetObject);
+	}
+
+	private void MoveToTargetObjectThenActivateAbility(PlayerActor activeActor, ArrivedAtTargetObjectCallback callbackOnMovementFinished, GameObject targetObject)
 	{
 		if (activeActor is PlayerMovementController movementActor)
 		{
@@ -37,11 +51,10 @@ public class Actor : MonoBehaviour
 			activeActor.TargetClicked(targetTile);
 			activeActor.TargetConfirmed(targetTile);
 
-			//Action action = () => { movementActor.MovementFinished -= action; };
 			Action handler = null;
 			handler = () =>
 			{
-				MovementActorOnMovementFinished(movementActor, targetObject);
+				callbackOnMovementFinished(targetObject);
 				movementActor.MovementFinished -= handler;
 			};
 
@@ -49,12 +62,21 @@ public class Actor : MonoBehaviour
 		}
 	}
 
-	private void MovementActorOnMovementFinished(PlayerMovementController movementActor, GameObject targetObject)
+	private void PrimaryAbilityOnMovementFinished(GameObject targetObject)
 	{
 		if (BasicAbility != null)
 		{
 			BasicAbility.Do(targetObject);
 			ConsumeEnergy(BasicAbility.EnergyAmount);
+		}
+	}
+
+	private void SecondaryAbilityOnMovementFinished(GameObject targetObject)
+	{
+		if (SecondaryAbility != null)
+		{
+			SecondaryAbility.Do(targetObject);
+			ConsumeEnergy((SecondaryAbility.EnergyAmount));
 		}
 	}
 }

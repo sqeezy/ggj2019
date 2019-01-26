@@ -22,8 +22,10 @@ public class MapInput : MonoBehaviour
 
 	public event Action<GameObject> GameObjectClicked;
 
-	public event Action<GameObject> GameObjectActionCalled;
+	public event Action<GameObject> GameObjectPushActionCalled;
 
+	public event Action<GameObject> GameObjectPickUpActionCalled;
+	
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -38,7 +40,15 @@ public class MapInput : MonoBehaviour
 		{
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
 			{
-				GameObjectActionCalled.Raise(hit.collider.gameObject);
+				GameObjectPushActionCalled.Raise(hit.collider.gameObject);
+			}
+		}
+
+		if (Input.GetMouseButtonDown(2))
+		{
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
+			{
+				GameObjectPickUpActionCalled.Raise(hit.collider.gameObject);
 			}
 		}
 	}
