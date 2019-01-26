@@ -91,29 +91,18 @@ public class MapEditor : EditorWindow
 				selectedObject.Walkable = false;
 			}
 		}
-		
-	}
 
-	private void UpdateSelection()
-	{
-		var tiles = FindObjectsOfType<Tile>();
-		foreach (var tile in tiles)
+		if (_map == null)
 		{
-			var sprite = tile.GetComponent<SpriteRenderer>();
-			if (sprite != null)
-			{
-				sprite.color = Color.white;
-			}
+			GUILayout.Label("No Map loaded!!");
+		}
+		if (GUILayout.Button("Laod Map"))
+		{
+			_map = GameObject.FindObjectOfType<Map>();
+			_map.Load();
+			_activeGrid = _map.Grid;
 		}
 
-		foreach (var gameObject in Selection.gameObjects)
-		{
-			var sprite = gameObject.GetComponent<SpriteRenderer>();
-			if (sprite != null)
-			{
-				sprite.color = Color.cyan;
-			}
-		}
 	}
 
 	private void BuildMap()
