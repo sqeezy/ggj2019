@@ -3136,8 +3136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1331220dd6cbf24a84e0e7940b5feb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalState: {fileID: 698243874}
-  PlayerMovement: {fileID: 906940052}
   TileLayerMask:
     serializedVersion: 2
     m_Bits: 1048576
@@ -4490,7 +4488,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b9b82e6836b6847912f53fd32f9a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveActor: {fileID: 0}
+  Input: {fileID: 0}
   MapState: {fileID: 1575471108}
+  SelectedObject: {fileID: 0}
 --- !u!4 &698243875
 Transform:
   m_ObjectHideFlags: 0
@@ -5913,6 +5914,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+--- !u!114 &906940053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906940051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19222ba66514801868debb0efc66bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &944323209
 GameObject:
   m_ObjectHideFlags: 0

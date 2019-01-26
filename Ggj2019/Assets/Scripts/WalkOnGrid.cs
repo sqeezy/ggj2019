@@ -1,16 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-public class WalkOnGrid
+public class WalkOnGrid : MonoBehaviour
 {
-	public IEnumerable<Tile> GetPath(Tile[,] grid, Tile start, Tile target)
+	private Tile[,] _grid;
+
+	private void Start()
+	{
+		_grid = GetComponent<Map>().Grid;
+	}
+
+	public IEnumerable<Tile> GetPath(Tile start, Tile target)
 	{
 		if (start == target)
 		{
 			return new[] {start};
 		}
 
-		var allTiles = grid.Flatten().ToArray();
+		var allTiles = _grid.Flatten().ToArray();
 		var distances = allTiles.ToDictionary(t => t, l => int.MaxValue);
 		var bestPrev = allTiles.ToDictionary(t => t, l => (Tile) null);
 		var stillToVisit = new HashSet<Tile>(allTiles);
@@ -24,7 +32,7 @@ public class WalkOnGrid
 			stillToVisit.Remove(nodeWithShortestDistance);
 			var distCandidate = nodeDistance + 1;
 
-			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(grid).Intersect(stillToVisit))
+			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(_grid).Intersect(stillToVisit))
 			{
 				if (distances[neighbor] > distCandidate)
 				{

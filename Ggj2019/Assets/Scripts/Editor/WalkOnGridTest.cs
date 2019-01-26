@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
 
 namespace Editor
 {
@@ -152,7 +151,8 @@ namespace Editor
 
 		private void WhenGetPathIsCalled()
 		{
-			_result = _sut.GetPath(_grid, _start, _target);
+			_sut. = _grid;
+			_result = _sut.GetPath(_start, _target);
 		}
 	}
 }
