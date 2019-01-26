@@ -100,17 +100,41 @@ namespace Editor
 				GridTile(0, 2));
 		}
 
+		/// <summary>
+		/// S 1 2 3 4
+		/// 1 X X X 5
+		/// 2 X T X 6
+		/// </summary>
+		[Test]
+		public void GetPath_finds_the_nearest_reachable_tile()
+		{
+			GivenGrid(5, 3);
+			GivenStart(GridTile(0, 0));
+			GivenTarget(GridTile(2, 2));
+
+			GivenTileIsObstacle(1,2);
+			GivenTileIsObstacle(1,1);
+			GivenTileIsObstacle(2,1);
+			GivenTileIsObstacle(3,1);
+			GivenTileIsObstacle(3,2);
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(0,0), GridTile(0,1), GridTile(0,2));
+		}
+
 		private void GivenTileIsObstacle(int x, int y)
 		{
 			_grid[x, y].Walkable = false;
 		}
 
-		private void ThenResultIs(params Tile[] result)
+		private void ThenResultIs(params Tile[] expectedPath)
 		{
-			Assert.True(result.Length == _result.Count());
-			for (int i = 0; i < result.Length; i++)
+			Assert.True(expectedPath.Length == _result.Count(), $"Got length {_result.Count()}, expected {expectedPath.Length}");
+
+			for (int i = 0; i < expectedPath.Length; i++)
 			{
-				var equal = result[i] == _result.ToArray()[i];
+				var equal = expectedPath[i] == _result.ToArray()[i];
 				Assert.True(equal);
 			}
 		}
