@@ -23,7 +23,6 @@ public class PlayerMovementController : Actor
 
 	protected virtual void OnHasPathUpdated()
 	{
-		
 	}
 
 	protected virtual void Start()
@@ -46,6 +45,18 @@ public class PlayerMovementController : Actor
 		var playerPosition = new Vector2(transform.position.x, transform.position.y);
 		var targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 		var moveDir = (targetPosition - playerPosition).normalized;
+		var scale = transform.localScale;
+		if (moveDir.x < 0)
+		{
+			scale.x = -1; 
+		}
+		else
+		{
+			scale.x = 1;
+		}
+
+		transform.localScale = scale;
+
 		var moveVec = moveDir * Speed * Time.deltaTime;
 
 		if (moveVec.sqrMagnitude > (targetPosition - playerPosition).sqrMagnitude)
