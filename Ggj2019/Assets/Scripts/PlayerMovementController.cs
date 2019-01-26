@@ -12,7 +12,6 @@ public class PlayerMovementController : Actor
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
-	public Tile PositionTile { get; protected set; }
 
 	public bool HasPath
 	{
