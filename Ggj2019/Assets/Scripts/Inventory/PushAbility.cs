@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PushAbility : Ability
@@ -12,7 +11,7 @@ public class PushAbility : Ability
 		var actor = targetTile.GetComponent<PushableActor>();
 		if (actor != null)
 		{
-			var direction = actor.transform.position - this.transform.position;
+			var direction = actor.transform.position - transform.position;
 			StopAllCoroutines();
 			StartCoroutine(WaitForPush(actor, direction));
 			var scale = transform.localScale;
@@ -24,6 +23,7 @@ public class PushAbility : Ability
 			{
 				scale.x = 1;
 			}
+
 			transform.localScale = scale;
 			if (AnimationController != null)
 			{

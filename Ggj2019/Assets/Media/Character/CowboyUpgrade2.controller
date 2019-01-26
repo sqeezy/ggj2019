@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CowboyUpgrade1
+  m_Name: CowboyUpgrade2
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Move
@@ -189,7 +189,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0ce18020a3a44533b6f9bfdd82d6052, type: 2}
+  m_Motion: {fileID: 7400000, guid: b10dda8ee96594efd8c347dab55279d9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -216,7 +216,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c069877a8cb0f40269e0ca4adf23eda4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 96f9272f244674b74bef565848036f56, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -242,7 +242,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a8d4ae91b41894e56ba0a2ad7baa3dcc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6327b567ab99b432a8d7e58b7a140c6c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -268,7 +268,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9953f18d5810c46d69391222c2f43bd3, type: 2}
+  m_Motion: {fileID: 7400000, guid: 268aee801983a487d9b25a671f4136b6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -291,10 +291,10 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: -168, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102048080067939358}
-    m_Position: {x: 444, y: -48, z: 0}
+    m_Position: {x: 396, y: -24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102358984816513634}
-    m_Position: {x: 312, y: 48, z: 0}
+    m_Position: {x: 420, y: 84, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101372254978217930}

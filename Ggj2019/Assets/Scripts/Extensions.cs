@@ -7,10 +7,7 @@ public static class Extensions
 
 	public static IEnumerable<T> Flatten<T>(this T[,] grid)
 	{
-		foreach (T t in grid)
-		{
-			yield return t;
-		}
+		foreach (var t in grid) yield return t;
 	}
 
 	public static IEnumerable<Tile> GetNeighbors(this Tile tile, Tile[,] grid)
@@ -38,7 +35,7 @@ public static class Extensions
 		a?.Invoke(arg);
 	}
 
-	public static void Raise<T1,T2>(this Action<T1, T2> a, T1 arg1, T2 arg2)
+	public static void Raise<T1, T2>(this Action<T1, T2> a, T1 arg1, T2 arg2)
 	{
 		a?.Invoke(arg1, arg2);
 	}
