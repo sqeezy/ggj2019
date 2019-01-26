@@ -15,15 +15,6 @@ public class Map : MonoBehaviour
 
 	public void Store(Tile[,] grid, int xWidth, int yWidth)
 	{
-		_flattenedGrid = new Tile[xWidth*yWidth];
-		for (int x = 0; x < xWidth; x++)
-		{
-			for (int y = 0; y < yWidth; y++)
-			{
-				_flattenedGrid[y * _xWidth + x] = grid[x, y];
-			}
-		}
-
 		_xWidth = xWidth;
 		_yWidth = yWidth;
 	}
@@ -31,12 +22,10 @@ public class Map : MonoBehaviour
 	public void Load()
 	{
 		Grid = new Tile[_xWidth, _yWidth];
-		for (int x = 0; x < _xWidth; x++)
+		foreach (var childTile in GetComponentsInChildren<Tile>())
 		{
-			for (int y = 0; y < _yWidth; y++)
-			{
-				Grid[x, y] = _flattenedGrid[y * _xWidth + x];
-			}
+			Grid[(int) childTile.transform.position.x, (int) childTile.transform.position.y] = childTile;
 		}
+		
 	}
 }
