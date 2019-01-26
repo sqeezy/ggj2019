@@ -105,10 +105,12 @@ public class PlayerMovementController : Actor
 
 	public override void Deselect()
 	{
+		/*
 		foreach (var tile in Path)
 		{
 			HighlightPath(false);
 		}
+		*/
 	}
 
 	public override void TargetClicked(Tile target)
@@ -121,12 +123,14 @@ public class PlayerMovementController : Actor
 
 	private void HighlightPath(bool highlight)
 	{
+		/*
 		foreach (var tile in Path)
 		{
 			//TODO: highlight tile if tile is visible.
 			//tile.highlight(highlight);
 
 		}
+		*/
 	}
 
 	public override void TargetConfirmed(Tile tile)
