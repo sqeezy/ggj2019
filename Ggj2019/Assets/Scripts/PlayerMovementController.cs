@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerMovementController : Actor
 {
 	private (int, int) _position;
-	private Tile _positionTile;
+	protected Tile _positionTile;
 	private int NextWayPointIndex;
 	public float Speed;
 	public Tile StartPosition;
@@ -39,7 +39,7 @@ public class PlayerMovementController : Actor
 
 		if (moveVec.sqrMagnitude > (targetPosition - playerPosition).sqrMagnitude)
 		{
-			_positionTile = nextPoint;
+			UpdateTile(nextPoint);
 			var distOverflow = moveVec.magnitude - (targetPosition - playerPosition).magnitude;
 			//travel to next point if there is one with distance overflow.
 			if (NextWayPointIndex + 1 < WaypointList.Length)
@@ -60,7 +60,7 @@ public class PlayerMovementController : Actor
 		}
 		else if (moveVec.magnitude <= 0.005f)
 		{
-			_positionTile = nextPoint;
+			UpdateTile(nextPoint);
 			if (NextWayPointIndex + 1 < WaypointList.Length)
 			{
 				NextWayPointIndex++;
@@ -81,6 +81,12 @@ public class PlayerMovementController : Actor
 		{
 			transform.position = transform.position + new Vector3(moveVec.x, moveVec.y, 0.0f);
 		}
+	}
+
+	private void UpdateTile(Tile nextPoint)
+	{
+		_positionTile = nextPoint;
+		ConsumeEnergy(1);
 	}
 
 	private void MoveOnPath()
