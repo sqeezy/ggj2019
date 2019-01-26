@@ -93,7 +93,7 @@ public class Actor : Revealable
 		if (TertiaryAbility != null)
 		{
 			TertiaryAbility.Do(targetObject);
-			ConsumeEnergy(SecondaryAbility.EnergyAmount);
+			ConsumeEnergy(TertiaryAbility.EnergyAmount);
 		}
 	}
 
