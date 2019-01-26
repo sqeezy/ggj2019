@@ -11,6 +11,10 @@ public class Actor : MonoBehaviour
 
 	public IEnumerable<Tile> Path { get; protected set; }
 
+	public virtual void Deselect()
+	{
+	}
+
 	public virtual void TargetClicked(Tile target)
 	{
 	}

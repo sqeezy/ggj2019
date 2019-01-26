@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour
 		}
 		else if (obj.GetComponent<Actor>() is Actor actor)
 		{
-			//TODO: notify old actor to clear preview.
+			ActiveActor.Deselect();
 			ActiveActor = actor;
 		}
 	}

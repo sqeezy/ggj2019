@@ -37,12 +37,11 @@ public class PlayerMovementController : Actor
 		var moveDir = (targetPosition - playerPosition).normalized;
 		var moveVec = moveDir * Speed * Time.deltaTime;
 
-		//var nextPos = playerPosition
 		if (moveVec.sqrMagnitude > (targetPosition - playerPosition).sqrMagnitude)
 		{
 			_positionTile = nextPoint;
 			var distOverflow = moveVec.magnitude - (targetPosition - playerPosition).magnitude;
-			//travel to next point if there is one with rest dist.
+			//travel to next point if there is one with distance overflow.
 			if (NextWayPointIndex + 1 < WaypointList.Length)
 			{
 				NextWayPointIndex++;
@@ -98,9 +97,30 @@ public class PlayerMovementController : Actor
 		}
 	}
 
+	public override void Deselect()
+	{
+		foreach (var tile in Path)
+		{
+			HighlightPath(false);
+		}
+	}
+
 	public override void TargetClicked(Tile target)
 	{
+		HighlightPath(false);
 		Path = WalkOnGrid.GetPath(_positionTile, target);
+		HighlightPath(true);
+
+	}
+
+	private void HighlightPath(bool highlight)
+	{
+		foreach (var tile in Path)
+		{
+			//TODO: highlight tile if tile is visible.
+			//tile.highlight(highlight);
+
+		}
 	}
 
 	public override void TargetConfirmed(Tile tile)
