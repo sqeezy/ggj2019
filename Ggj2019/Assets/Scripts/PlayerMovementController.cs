@@ -15,7 +15,7 @@ public class PlayerMovementController : Actor
 	private Tile[] WaypointList;
 	public bool HasPath { get; private set; }
 
-	private void Start()
+	protected virtual void Start()
 	{
 		var pos = StartPosition.transform.position;
 		pos.z = -1f;
@@ -83,7 +83,7 @@ public class PlayerMovementController : Actor
 		}
 	}
 
-	private void UpdateTile(Tile nextPoint)
+	protected virtual void UpdateTile(Tile nextPoint)
 	{
 		_positionTile = nextPoint;
 		ConsumeEnergy(1);
