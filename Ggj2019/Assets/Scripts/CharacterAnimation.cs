@@ -21,4 +21,14 @@ public class CharacterAnimation : MonoBehaviour
 	{
 		AnimationController.SetTrigger(AnimationData.Move);
 	}
+
+	public void Idle()
+	{
+		AnimationController.SetTrigger(AnimationData.Idle);
+	}
+
+	public void BasicAbility()
+	{
+		AnimationController.SetTrigger(AnimationData.BasicAbility);
+	}
 }
