@@ -5,27 +5,17 @@ using UnityEngine;
 
 #endregion
 
-[RequireComponent(typeof(PlayerMovementController))]
 public class Actor : MonoBehaviour
 {
 	public WalkOnGrid WalkOnGrid;
-	private PlayerMovementController _movement;
 
-	private void Start()
+	public IEnumerable<Tile> Path { get; protected set; }
+
+	public virtual void TargetClicked(Tile target)
 	{
-		_movement = GetComponent<PlayerMovementController>();
 	}
 
-	public IEnumerable<Tile> Path { get; private set; }
-
-	public void TargetClicked(Tile target)
+	public virtual void TargetConfirmed(Tile tile)
 	{
-		Tile position = new Tile();
-		Path = WalkOnGrid.GetPath(position, target);
-	}
-
-	public void TargetConfirmed(Tile tile)
-	{
-		_movement.MoveOnPath(Path);
 	}
 }
