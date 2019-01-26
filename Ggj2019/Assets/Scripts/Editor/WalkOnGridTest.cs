@@ -78,6 +78,28 @@ namespace Editor
 			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2, 0), GridTile(2, 1), GridTile(2, 2));
 		}
 
+		/// <summary>
+		/// S . . .
+		/// X X . X
+		/// T . . .
+		/// </summary>
+		[Test]
+		public void GetPath_can_find_through_a_maze()
+		{
+			GivenGrid(4, 3);
+			GivenStart(GridTile(0, 0));
+			GivenTarget(GridTile(0, 2));
+
+			GivenTileIsObstacle(1, 1);
+			GivenTileIsObstacle(0, 1);
+			GivenTileIsObstacle(3, 1);
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(0, 0), GridTile(1, 0), GridTile(2, 0), GridTile(2, 1), GridTile(2, 2), GridTile(1, 2),
+				GridTile(0, 2));
+		}
+
 		private void GivenTileIsObstacle(int x, int y)
 		{
 			_grid[x, y].Walkable = false;
