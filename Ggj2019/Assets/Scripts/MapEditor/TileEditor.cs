@@ -127,6 +127,8 @@ public class TileEditor : Editor
 							var newTile = PrefabUtility.InstantiatePrefab(targetTile as Tile) as Tile;
 							newTile.transform.position = selectedTile.transform.position;
 							newTile.transform.SetParent(selectedTile.transform.parent);
+							newTile.X = selectedTile.X;
+							newTile.Y = selectedTile.Y;
 							MapEditor.ReplaceTile(selectedTile, newTile);
 							DestroyImmediate(selectedTile.gameObject);
 							
