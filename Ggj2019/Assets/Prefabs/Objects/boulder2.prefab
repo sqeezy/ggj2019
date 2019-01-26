@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7121536914770427189}
   - component: {fileID: 5459985477366157991}
-  - component: {fileID: 2587457252358589567}
   - component: {fileID: 308926261}
   m_Layer: 20
   m_Name: boulder2
@@ -81,22 +80,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2587457252358589567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2587457252358589566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952756a92182eb5439dbb78fed3df8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X: 0
-  Y: 0
-  DiscoveryState: 0
-  Walkable: 0
 --- !u!65 &308926261
 BoxCollider:
   m_ObjectHideFlags: 0

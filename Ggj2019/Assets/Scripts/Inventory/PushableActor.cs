@@ -12,7 +12,7 @@ public class PushableActor : PlayerMovementController
 
 	protected override void UpdateTile(Tile nextPoint)
 	{
-		PositionTile.Walkable = OriginalWalkable;
+		PositionTile.Walkable = true;
 		base.UpdateTile(nextPoint);
 
 		PositionTile.Walkable = !BlocksMovement;

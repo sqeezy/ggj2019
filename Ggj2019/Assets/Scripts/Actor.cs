@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ObjectOnMap))]
 public class Actor : Revealable
 {
 	public Ability PrimaryAbility;
@@ -11,6 +12,22 @@ public class Actor : Revealable
 	public Ability TertiaryAbility;
 
 	public WalkOnGrid WalkOnGrid;
+
+	protected ObjectOnMap _objectOnMap;
+
+	public Tile PositionTile
+	{
+		get =>_objectOnMap.PositionTile;
+		set
+		{
+			_objectOnMap.PositionTile = value;
+		}
+	}
+
+	private void Awake()
+	{
+		_objectOnMap = GetComponent<ObjectOnMap>();
+	}
 
 	public IEnumerable<Tile> Path { get; protected set; }
 	public event Action<int> EnergyConsumed = t => { };
@@ -93,7 +110,7 @@ public class Actor : Revealable
 		if (TertiaryAbility != null)
 		{
 			TertiaryAbility.Do(targetObject);
-			ConsumeEnergy(SecondaryAbility.EnergyAmount);
+			ConsumeEnergy(TertiaryAbility.EnergyAmount);
 		}
 	}
 
