@@ -138,6 +138,20 @@ namespace Editor
 			ThenResultIs(GridTile(1, 0));
 		}
 
+		[Test]
+		public void GetPath_doesnt_leave_start_when_its_nearest_reachable_target()
+		{
+			GivenGrid(2, 2);
+			GivenStart(GridTile(0, 1));
+
+			GivenTileIsObstacle(0, 0);
+			GivenTarget(GridTile(0, 0));
+
+			WhenGetPathIsCalled();
+
+			ThenResultIs(GridTile(0, 1));
+		}
+
 		private void GivenTileIsObstacle(int x, int y)
 		{
 			_grid[x, y].Walkable = false;
