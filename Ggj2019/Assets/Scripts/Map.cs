@@ -1,32 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
+[Serializable]
 public class Map : MonoBehaviour
 {
-    public Tile TilePrefab;
-    public int XWidth;
-    public int YHeight;
+	public Tile[,] Grid;
 
+	[SerializeField] private Tile[] _flattenedGrid;
+	[SerializeField] private int _xWidth;
+	[SerializeField] private int _yWidth;
 
-    private Tile[,] _grid;
+	public void Store(Tile[,] grid, int xWidth, int yWidth)
+	{
+		_flattenedGrid = grid.Flatten().ToArray();
+		_xWidth = xWidth;
+		_yWidth = yWidth;
+	}
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        _grid = new Tile[XWidth, YHeight];
-        for (var xIndex = 0; xIndex < XWidth; xIndex++)
-        {
-            for (var yIndex = 0; yIndex < YHeight; yIndex++)
-            {
-                Tile tile = Instantiate(TilePrefab);
-                tile.transform.position = new Vector3(xIndex, yIndex, 0);
-                _grid[xIndex, yIndex] = tile;
-            }
-        }
-    }
+	public void Load()
+	{
+		Grid = new Tile[_xWidth, _yWidth];
+		for (int y = 0; y < _yWidth; y++)
+		{
+			for (int x = 0; x < _xWidth; x++)
+			{
+				Grid[x, y] = _flattenedGrid[y * _xWidth + x];
+			}
+		}
 
-    // Update is called once per frame
-    private void Update()
-    {
-    }
+	}
 }
