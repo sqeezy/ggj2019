@@ -62,11 +62,14 @@ public class WalkOnGrid : MonoBehaviour
 			}
 			else
 			{
-                var hitTilesNearestToTarget = reachableTiles
-                    .GroupBy(h => Distance(h.Key, target)).OrderBy(g => g.Key).First();
-                var nearTargetHitWithBestWayToStart =
-                    hitTilesNearestToTarget.OrderBy(l => distances[l.Key]).FirstOrDefault();
-                result = BacktrackFromTarget(nearTargetHitWithBestWayToStart.Key, bestPrev);
+				var hitTilesNearestToTarget = reachableTiles.Select(l => l.Key)
+				                                            .Concat(new[] {start})
+				                                            .GroupBy(h => Distance(h, target))
+				                                            .OrderBy(g => g.Key)
+				                                            .First();
+				var nearTargetHitWithBestWayToStart =
+					hitTilesNearestToTarget.OrderBy(l => distances[l]).FirstOrDefault();
+				result = BacktrackFromTarget(nearTargetHitWithBestWayToStart, bestPrev);
 			}
 		}
 
