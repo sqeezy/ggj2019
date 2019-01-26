@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2058441216807390611}
   - component: {fileID: 42703109}
   - component: {fileID: 42703110}
+  - component: {fileID: 5802249508447347026}
   m_Layer: 19
   m_Name: Cowboy
   m_TagString: Untagged
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasicAbility: {fileID: 42703110}
+  SecondaryAbility: {fileID: 5802249508447347026}
   WalkOnGrid: {fileID: 0}
   Speed: 1
   StartPosition: {fileID: 0}
@@ -103,6 +105,20 @@ MonoBehaviour:
   EnergyAmount: 1
   AnimationController: {fileID: 8581749601340397818}
   AnimationOffset: 1
+--- !u!114 &5802249508447347026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245212956927963700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c93cf343cbf43eeb4d7b68c90c583d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyAmount: 0
+  ActiveItem: {fileID: 0}
 --- !u!1 &8800075111236936992
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,8 +31,19 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
-		Input.GameObjectActionCalled += InputOnGameObjectActionCalled;
+		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
+		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
 		CurrentEnergy = StartEnergy;
+	}
+
+	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
 	}
 
 	private void ReduceEnergy(int amount)
@@ -40,7 +51,7 @@ public class GameState : MonoBehaviour
 		CurrentEnergy -= amount;
 	}
 
-	private void InputOnGameObjectActionCalled(GameObject obj)
+	private void InputOnGameObjectPushActionCalled(GameObject obj)
 	{
 		if (ActiveActor == null)
 		{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarryAbility : MonoBehaviour
+public class CarryAbility : Ability
 {
 	public Item ActiveItem;
 
