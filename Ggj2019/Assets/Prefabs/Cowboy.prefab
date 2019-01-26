@@ -84,6 +84,9 @@ MonoBehaviour:
   WalkOnGrid: {fileID: 0}
   Speed: 1
   StartPosition: {fileID: 0}
+  FullEnergy: 0
+  MaxEnergy: 0
+  CurrentEnergy: 0
   AnimationController: {fileID: 8581749601340397818}
 --- !u!114 &42703110
 MonoBehaviour:
@@ -99,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyAmount: 1
   AnimationController: {fileID: 8581749601340397818}
+  AnimationOffset: 1
 --- !u!1 &8800075111236936992
 GameObject:
   m_ObjectHideFlags: 0
