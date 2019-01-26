@@ -103,6 +103,23 @@ public class MapEditor : EditorWindow
 			_activeGrid = _map.Grid;
 		}
 
+		if(GUILayout.Button("Validate")){
+			
+			var tiles = _map.GetComponentsInChildren<Tile>();
+			var testGrid = new Tile[_xWidth.,_yWidth];
+			var selectedTile = new List<GameObject>();
+			foreach(var tile in tiles)
+			{
+				if(testGrid[tile.X, tile.Y] != null)
+				{
+					selectedTile.Add(tile.gameObject);
+				} else {
+					testGrid[tile.X, tile.Y] = tile;
+				}
+			}
+			Selection.objects = selectedTile.ToArray();
+		}
+
 	}
 
 	private void BuildMap()
@@ -115,8 +132,8 @@ public class MapEditor : EditorWindow
 
 	public static void ReplaceTile(Tile oldTile, Tile newTile)
 	{
-		_activeGrid[oldTile.X, oldTile.Y] = newTile;
-		StoreMap();
+		//_activeGrid[oldTile.X, oldTile.Y] = newTile;
+		//StoreMap();
 	}
 
 	public static void StoreMap()
@@ -142,4 +159,6 @@ public class MapEditor : EditorWindow
 
 		return grid;
 	}
+
+
 }
