@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour
     public DiscoveryState DiscoveryState;
 
     public bool Walkable;
+
+    public override string ToString() => $"({X} | {Y})";
 }
 
 public enum DiscoveryState
