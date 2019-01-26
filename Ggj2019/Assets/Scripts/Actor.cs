@@ -29,11 +29,31 @@ public class Actor : MonoBehaviour
 		EnergyConsumed(amount);
 	}
 
-	protected void ActivateBasicAbility(Tile targetTile)
+	public void ActivateBasicAbility(Actor activeActor, GameObject targetObject)
+	{
+		if (activeActor is PlayerMovementController movementActor)
+		{
+			var targetTile = activeActor.WalkOnGrid.Grid[(int)targetObject.transform.position.x, (int)targetObject.transform.position.y];
+			activeActor.TargetClicked(targetTile);
+			activeActor.TargetConfirmed(targetTile);
+
+			//Action action = () => { movementActor.MovementFinished -= action; };
+			Action handler = null;
+			handler = () =>
+			{
+				MovementActorOnMovementFinished(movementActor, targetObject);
+				movementActor.MovementFinished -= handler;
+			};
+
+			movementActor.MovementFinished += handler;
+		}
+	}
+
+	private void MovementActorOnMovementFinished(PlayerMovementController movementActor, GameObject targetObject)
 	{
 		if (BasicAbility != null)
 		{
-			BasicAbility.Do(targetTile);
+			BasicAbility.Do(targetObject);
 			ConsumeEnergy(BasicAbility.EnergyAmount);
 		}
 	}

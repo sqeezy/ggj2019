@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PushAbility : Ability
 {
-	public void PushObject(Tile targetTile)
+	public override void Do(GameObject targetTile)
 	{
 		var actor = targetTile.GetComponent<PushableActor>();
 		if (actor != null)
