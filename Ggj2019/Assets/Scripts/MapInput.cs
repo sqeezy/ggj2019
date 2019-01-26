@@ -1,10 +1,4 @@
-﻿// File: PlayerController.cs
-// Project: Divisor - HAW Math Games 
-// Author: Konstantin Rudolph
-// Creation Date: 22:02, 25.01.2019
-// Last Edit: 22:21, 25.01.2019 by Konstantin Rudolph
-
-using System;
+﻿using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
@@ -35,14 +29,6 @@ public class MapInput : MonoBehaviour
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
 			{
 				GameObjectPushActionCalled.Raise(hit.collider.gameObject);
-			}
-		}
-
-		if (Input.GetMouseButtonDown(2))
-		{
-			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
-			{
-				GameObjectPickUpActionCalled.Raise(hit.collider.gameObject);
 			}
 		}
 

@@ -10,6 +10,13 @@ public class CharacterAnimation : MonoBehaviour
 	public RuntimeAnimatorController Upgrade2Controller;
 
 	public AnimationNames AnimationData;
+	
+	private AnimationNames DefaultAnimationData;
+
+	void Start()
+	{
+		DefaultAnimationData = AnimationData;
+	}
 
 	public void Move()
 	{
@@ -26,12 +33,18 @@ public class CharacterAnimation : MonoBehaviour
 		AnimationController.SetTrigger(AnimationData.BasicAbility);
 	}
 
+	public void SecondaryAbility()
+	{
+		AnimationController.SetTrigger(AnimationData.SecondaryAbility);
+	}
+
 	public void Reset()
 	{
 		AnimationController.ResetTrigger(AnimationData.Move);
 		AnimationController.ResetTrigger(AnimationData.Idle);
 		AnimationController.ResetTrigger(AnimationData.BasicAbility);
 		AnimationController.ResetTrigger(AnimationData.SecondaryAbility);
+		AnimationData = DefaultAnimationData;
 	}
 
 	public void Upgrade()

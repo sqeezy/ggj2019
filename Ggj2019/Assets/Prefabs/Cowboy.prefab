@@ -95,8 +95,9 @@ MonoBehaviour:
   CarriedPickupableActor: {fileID: 0}
   CurrentEnergy: 0
   ForceUpgrade: 0
-  FullEnergy: 0
-  MaxEnergy: 0
+  FullEnergy: 5
+  MaxEnergy: 5
+  UI: {fileID: 0}
 --- !u!114 &42703110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyAmount: 0
+  AnimationController: {fileID: 8581749601340397818}
 --- !u!114 &8842067941447956185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyAmount: 0
+  AnimationController: {fileID: 8581749601340397818}
 --- !u!114 &1911473516607586309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +239,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpriteCowboy
       objectReference: {fileID: 0}
+    - target: {fileID: 6989331991032710384, guid: 14ccb7320ba0245d1b87f644714e7ea1,
+        type: 3}
+      propertyPath: Upgrade1Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b2d72849a452d435292db597d9ef602c, type: 2}
+    - target: {fileID: 6989331991032710384, guid: 14ccb7320ba0245d1b87f644714e7ea1,
+        type: 3}
+      propertyPath: Upgrade2Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a8a1da0d6e09f413fbe9c8cdb2cac3e8, type: 2}
     - target: {fileID: 6989331991032710385, guid: 14ccb7320ba0245d1b87f644714e7ea1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -291,16 +304,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6989331991032710384, guid: 14ccb7320ba0245d1b87f644714e7ea1,
-        type: 3}
-      propertyPath: Upgrade1Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b2d72849a452d435292db597d9ef602c, type: 2}
-    - target: {fileID: 6989331991032710384, guid: 14ccb7320ba0245d1b87f644714e7ea1,
-        type: 3}
-      propertyPath: Upgrade2Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: a8a1da0d6e09f413fbe9c8cdb2cac3e8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ccb7320ba0245d1b87f644714e7ea1, type: 3}
 --- !u!4 &8581749601340397819 stripped

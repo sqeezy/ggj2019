@@ -16,6 +16,8 @@ public class PlayerActor : PlayerMovementController
 	public int FullEnergy;
 	public int MaxEnergy;
 
+	public MainUI UI;
+
 	private void FixedUpdate()
 	{
 		if (ForceUpgrade)
@@ -48,6 +50,7 @@ public class PlayerActor : PlayerMovementController
 	public void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
+		UI.SetBlueBar(CurrentEnergy);
 	}
 
 	public void Upgrade()

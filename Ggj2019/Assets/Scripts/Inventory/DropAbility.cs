@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerActor))]
 public class DropAbility : Ability
 {
+	public CharacterAnimation AnimationController;
+	
 	public override void Do(GameObject targetTile)
 	{
 		var playerActor = GetComponent<PlayerActor>();
@@ -18,5 +20,6 @@ public class DropAbility : Ability
         carriedPickupableActor.SetPosition(dropPosition);
 		carriedPickupableActor.gameObject.SetActive(true);
 		playerActor.CarriedPickupableActor = null;
+		AnimationController.Reset();
 	}
 }
