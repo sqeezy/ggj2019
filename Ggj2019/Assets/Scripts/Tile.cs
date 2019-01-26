@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
 [RequireComponent(typeof(BoxCollider))]
 public class Tile : MonoBehaviour
 {
 	private IEnumerable<SpriteRenderer> _renderers;
-
-	public DiscoveryState DiscoveryState;
 
 	public bool Walkable;
 	public int X;
@@ -37,11 +33,4 @@ public class Tile : MonoBehaviour
 	{
 		foreach (var renderer in _renderers) renderer.color = color;
 	}
-}
-
-public enum DiscoveryState
-{
-	Hidden,
-	Discovered,
-	Visible
 }
