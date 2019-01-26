@@ -15,10 +15,7 @@ public class DropAbility : Ability
 		var pickupable = carriedPickupableActor;
 		var dropPosition = targetTile.GetComponent<Tile>();
 		dropPosition.Walkable = !pickupable.BlocksMovement;
-		foreach (var component in playerActor.CarriedPickupableActor.gameObject.GetComponents<PlayerMovementController>())
-		{
-			component.SetPosition(dropPosition);
-		}
+        carriedPickupableActor.SetPosition(dropPosition);
 		playerActor.CarriedPickupableActor = null;
 	}
 }
