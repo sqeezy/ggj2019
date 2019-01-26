@@ -10234,6 +10234,7 @@ MonoBehaviour:
   SecondaryAbility: {fileID: 0}
   TertiaryAbility: {fileID: 0}
   WalkOnGrid: {fileID: 1844198384}
+  BlocksMovement: 1
   Speed: 0
   StartPosition: {fileID: 749217729}
 --- !u!1001 &1762461869

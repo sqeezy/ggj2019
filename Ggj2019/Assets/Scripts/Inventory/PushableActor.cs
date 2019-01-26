@@ -2,16 +2,6 @@
 
 public class PushableActor : PlayerMovementController
 {
-	public bool BlocksMovement;
-	private bool OriginalWalkable;
-
-	protected override void Start()
-	{
-		base.Start();
-		OriginalWalkable = PositionTile.Walkable;
-		PositionTile.Walkable = !BlocksMovement;
-	}
-
 	public void Push(Vector3 direction)
 	{
 		var target = new Vector2Int(PositionTile.X + (int) direction.x, PositionTile.Y + (int) direction.y);
