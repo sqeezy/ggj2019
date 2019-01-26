@@ -23,13 +23,12 @@ public class Map : MonoBehaviour
 	public void Load()
 	{
 		Grid = new Tile[_xWidth, _yWidth];
-		for (int y = 0; y < _yWidth; y++)
+		for (int x = 0; x < _xWidth; x++)
 		{
-			for (int x = 0; x < _xWidth; x++)
+			for (int y = 0; y < _yWidth; y++)
 			{
-				Grid[x, y] = _flattenedGrid[y * _xWidth + x];
+				Grid[x, y] = _flattenedGrid[x * _xWidth + y];
 			}
 		}
-
 	}
 }
