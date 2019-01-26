@@ -53,6 +53,11 @@ public class GameState : MonoBehaviour
 				ActiveActor.TargetClicked(tile);
 			}
 		}
+		else if (obj.GetComponent<Actor>() is Actor actor)
+		{
+			//TODO: notify old actor to clear preview.
+			ActiveActor = actor;
+		}
 	}
 
 	public event Action<Tile, Tile> SelectedTileChanged;

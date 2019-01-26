@@ -17,7 +17,9 @@ public class PlayerMovementController : Actor
 
 	private void Start()
 	{
-		transform.position = StartPosition.transform.position;
+		var pos = StartPosition.transform.position;
+		pos.z = -1f;
+		transform.position = pos;
 		_positionTile = StartPosition;
 	}
 
@@ -94,12 +96,6 @@ public class PlayerMovementController : Actor
 		{
 			HasPath = false;
 		}
-	}
-
-	private void UpdatePositon()
-	{
-		_position.Item1 = Mathf.RoundToInt(transform.position.x);
-		_position.Item2 = Mathf.RoundToInt(transform.position.y);
 	}
 
 	public override void TargetClicked(Tile target)
