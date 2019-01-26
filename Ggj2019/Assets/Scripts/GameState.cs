@@ -8,7 +8,7 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
 	private Tile _selectedTile;
-	public Actor ActiveActor;
+	public PlayerActor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
 	
@@ -76,7 +76,7 @@ public class GameState : MonoBehaviour
 				ActiveActor.TargetClicked(tile);
 			}
 		}
-		else if (obj.GetComponent<Actor>() is Actor actor)
+		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
 			ActiveActor.Deselect();
 			ActiveActor = actor;
