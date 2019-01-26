@@ -12,7 +12,7 @@ public class Revealable : MonoBehaviour
 		SetAllRendererColors(Color.white);
 	}
 
-	private void Start()
+	protected virtual void Start()
 	{
 		GetComponent<Collider>().isTrigger = true;
 		_renderers = GetComponentsInParent<SpriteRenderer>().Concat(GetComponentsInChildren<SpriteRenderer>());

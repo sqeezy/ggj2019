@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Actor : MonoBehaviour
+public class Actor : Revealable
 {
 	public event Action<int> EnergyConsumed = (t) => { };
 

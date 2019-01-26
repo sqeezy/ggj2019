@@ -27,6 +27,7 @@ public class PlayerMovementController : Actor
 
 	protected virtual void Start()
 	{
+		base.Start();
 		var pos = StartPosition.transform.position;
 		pos.z = -1f;
 		transform.position = pos;
