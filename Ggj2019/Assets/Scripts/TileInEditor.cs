@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -14,7 +11,6 @@ public class TileInEditor : MonoBehaviour
 
 	private void UpdateSelection()
 	{
-		
 	}
 
 	private void Update()

@@ -1,23 +1,12 @@
-﻿using System;
-using UnityEngine;
-
-[Serializable]
-public class Tile : MonoBehaviour
+﻿public class Tile : Revealable
 {
-    public int X;
+	public bool Walkable;
+	public int X;
 
-    public int Y;
+	public int Y;
 
-    public DiscoveryState DiscoveryState;
-
-    public bool Walkable;
-
-    public override string ToString() => $"({X} | {Y})";
-}
-
-public enum DiscoveryState
-{
-    Hidden,
-    Discovered,
-    Visible
+	public override string ToString()
+	{
+		return $"({X} | {Y})";
+	}
 }

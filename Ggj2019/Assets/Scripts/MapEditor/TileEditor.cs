@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,19 +9,19 @@ public class TileEditor : Editor
 	public enum PaintMode
 	{
 		None,
-		Additive, 
+		Additive,
 		Subtract
 	}
 
-	private PaintMode _mode;
-
 	public static HashSet<Tile> _selectedObjects = new HashSet<Tile>();
 
-	void OnEnable()
+	private PaintMode _mode;
+
+	private void OnEnable()
 	{
 		ClearSelection();
 
-		SceneView.onSceneGUIDelegate += this.OnSceneMouseOver;
+		SceneView.onSceneGUIDelegate += OnSceneMouseOver;
 		Selection.selectionChanged += ClearSelection;
 	}
 
@@ -44,16 +41,16 @@ public class TileEditor : Editor
 	}
 
 
-	void OnSceneMouseOver(SceneView view)
+	private void OnSceneMouseOver(SceneView view)
 	{
-		Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+		var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
 		RaycastHit hit;
 		//And add switch Event.current.type for checking Mouse click and switch tiles
-		if (Physics.Raycast (ray, out hit, 100f)) 
+		if (Physics.Raycast(ray, out hit, 100f))
 		{
 			//Debug.DrawRay (ray.origin, hit.transform.position, Color.blue, 5f);
 			var tile = hit.collider.GetComponent<Tile>();
-			
+
 			if (tile != null && _mode == PaintMode.Additive)
 			{
 				if (!_selectedObjects.Contains(tile))
@@ -65,6 +62,7 @@ public class TileEditor : Editor
 						renderer.color = Color.cyan;
 					}
 				}
+
 				//Debug.Log (string.Format("Tile: {0}:{1}", tile.X, tile.Y));
 			}
 
@@ -82,24 +80,25 @@ public class TileEditor : Editor
 			}
 		}
 	}
-	
-	void OnSceneGUI()
+
+	private void OnSceneGUI()
 	{
-		Event e = Event.current;
+		var e = Event.current;
 		switch (e.type)
 		{
 			case EventType.MouseDown:
 				ClearSelection();
 				break;
 			case EventType.KeyDown:
-				if (Event.current.keyCode == (KeyCode.A))
+				if (Event.current.keyCode == KeyCode.A)
 				{
 					_mode = PaintMode.Additive;
 				}
-				else if (Event.current.keyCode == (KeyCode.S))
+				else if (Event.current.keyCode == KeyCode.S)
 				{
 					_mode = PaintMode.Subtract;
 				}
+
 				break;
 
 			case EventType.KeyUp:
@@ -109,13 +108,13 @@ public class TileEditor : Editor
 					return;
 				}
 
-				if (Event.current.keyCode == (KeyCode.A) || Event.current.keyCode == KeyCode.S)
+				if (Event.current.keyCode == KeyCode.A || Event.current.keyCode == KeyCode.S)
 				{
 					_mode = PaintMode.None;
 				}
+
 				if (Event.current.keyCode == KeyCode.Space)
 				{
-
 					if (MapEditor.ActiveSet != null)
 					{
 						var activeList = MapEditor.TileSets[MapEditor.ActiveSet];
@@ -126,24 +125,23 @@ public class TileEditor : Editor
 
 						foreach (var selectedTile in _selectedObjects)
 						{
-							var choosen = Random.Range(0, activeList.Count-1);
+							var choosen = Random.Range(0, activeList.Count - 1);
 							var targetTile = activeList[choosen];
-							var newTile = PrefabUtility.InstantiatePrefab(targetTile as Tile) as Tile;
+							var newTile = PrefabUtility.InstantiatePrefab(targetTile) as Tile;
 							newTile.transform.position = selectedTile.transform.position;
 							newTile.transform.SetParent(selectedTile.transform.parent);
 							newTile.X = selectedTile.X;
 							newTile.Y = selectedTile.Y;
 							MapEditor.ReplaceTile(selectedTile, newTile);
 							DestroyImmediate(selectedTile.gameObject);
-							
 						}
 					}
 					else
 					{
 						Debug.LogWarning("No matching tile selected");
 					}
-					ClearSelection();
 
+					ClearSelection();
 				}
 
 				break;

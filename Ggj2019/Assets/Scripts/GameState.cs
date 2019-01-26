@@ -1,21 +1,17 @@
-#region
-
 using System;
 using UnityEngine;
-
-#endregion
 
 public class GameState : MonoBehaviour
 {
 	private Tile _selectedTile;
-	public Actor ActiveActor;
+	public PlayerActor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
-	
-	public int StartEnergy; 
+
+	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
 
-	
+
 	public Tile SelectedTile
 	{
 		get => _selectedTile;
@@ -35,9 +31,30 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
-		Input.GameObjectActionCalled += InputOnGameObjectActionCalled;
+		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
+		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
+		Input.DropActionCalled += InputDropActionCalled;
 		CurrentEnergy = StartEnergy;
-		ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void InputDropActionCalled()
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivateTertiaryAbility(ActiveActor, ActiveActor.PositionTile.gameObject);
+	}
+
+	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
 	}
 
 	private void ReduceEnergy(int amount)
@@ -45,16 +62,14 @@ public class GameState : MonoBehaviour
 		CurrentEnergy -= amount;
 	}
 
-	private void InputOnGameObjectActionCalled(GameObject obj)
+	private void InputOnGameObjectPushActionCalled(GameObject obj)
 	{
 		if (ActiveActor == null)
 		{
 			return;
-
 		}
 
-		ActiveActor.ActivateBasicAbility(ActiveActor, obj);
-
+		ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)
@@ -76,10 +91,16 @@ public class GameState : MonoBehaviour
 				ActiveActor.TargetClicked(tile);
 			}
 		}
-		else if (obj.GetComponent<Actor>() is Actor actor)
+		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
-			ActiveActor.Deselect();
+			if (ActiveActor != null)
+			{
+				ActiveActor.EnergyConsumed -= ReduceEnergy;
+				ActiveActor.Deselect();
+			}
+
 			ActiveActor = actor;
+			ActiveActor.EnergyConsumed += ReduceEnergy;
 		}
 	}
 

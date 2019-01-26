@@ -1,30 +1,51 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Linq;
 using UnityEngine;
 
-#endregion
-
 public class PlayerMovementController : Actor
 {
-
-	public event Action MovementFinished;
-	
+	private bool _hasPath;
 	private (int, int) _position;
-	public Tile PositionTile { get; protected set; }
+
+	public bool BlocksMovement;
 	private int NextWayPointIndex;
+	protected bool OriginalWalkable;
 	public float Speed;
 	public Tile StartPosition;
 	private Tile[] WaypointList;
-	public bool HasPath { get; private set; }
+	public Tile PositionTile { get; protected set; }
+
+	public bool HasPath
+	{
+		get => _hasPath;
+		private set
+		{
+			_hasPath = value;
+			OnHasPathUpdated();
+		}
+	}
+
+	public event Action MovementFinished;
+
+	protected virtual void OnHasPathUpdated()
+	{
+	}
+
 
 	protected virtual void Start()
 	{
+		base.Start();
 		var pos = StartPosition.transform.position;
 		pos.z = -1f;
 		transform.position = pos;
 		PositionTile = StartPosition;
+		OriginalWalkable = PositionTile.Walkable;
+		PositionTile.Walkable = !BlocksMovement;
+	}
+
+	public void SetPosition(Tile newPosition)
+	{
+		transform.position = new Vector3(newPosition.X, newPosition.Y, -1f);
 	}
 
 	// Update is called once per frame
@@ -39,6 +60,18 @@ public class PlayerMovementController : Actor
 		var playerPosition = new Vector2(transform.position.x, transform.position.y);
 		var targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 		var moveDir = (targetPosition - playerPosition).normalized;
+		var scale = transform.localScale;
+		if (moveDir.x < 0)
+		{
+			scale.x = -1;
+		}
+		else
+		{
+			scale.x = 1;
+		}
+
+		transform.localScale = scale;
+
 		var moveVec = moveDir * Speed * Time.deltaTime;
 
 		if (moveVec.sqrMagnitude > (targetPosition - playerPosition).sqrMagnitude)
@@ -54,7 +87,8 @@ public class PlayerMovementController : Actor
 				targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 				moveDir = (targetPosition - oldTargetPosition).normalized;
 				moveVec = moveDir * distOverflow;
-				transform.position = transform.position = oldTargetPosition + moveVec;
+				var tmp = oldTargetPosition + moveVec;
+				transform.position = new Vector3(tmp.x, tmp.y, -1f);
 			}
 			else
 			{
@@ -72,7 +106,8 @@ public class PlayerMovementController : Actor
 				targetPosition = new Vector2(nextPoint.X, nextPoint.Y);
 				moveDir = (targetPosition - oldTargetPosition).normalized;
 				moveVec = moveDir * Speed * Time.deltaTime;
-				transform.position = transform.position = oldTargetPosition + moveVec;
+				var tmp = oldTargetPosition + moveVec;
+				transform.position = new Vector3(tmp.x, tmp.y, -1f);
 			}
 			else
 			{
@@ -81,13 +116,17 @@ public class PlayerMovementController : Actor
 		}
 		else
 		{
-			transform.position = transform.position + new Vector3(moveVec.x, moveVec.y, 0.0f);
+			var tmp = transform.position + new Vector3(moveVec.x, moveVec.y, 0.0f);
+			tmp.z = -1.0f;
+			transform.position = tmp;
 		}
 	}
 
 	private void FinishMovement(Vector2 targetPosition)
 	{
-		transform.position = targetPosition;
+		var tmp = new Vector3(targetPosition.x, targetPosition.y);
+		tmp.z = -1f;
+		transform.position = tmp;
 		HasPath = false;
 		MovementFinished.Raise();
 	}
@@ -127,7 +166,6 @@ public class PlayerMovementController : Actor
 		HighlightPath(false);
 		Path = WalkOnGrid.GetPath(PositionTile, target);
 		HighlightPath(true);
-
 	}
 
 	private void HighlightPath(bool highlight)

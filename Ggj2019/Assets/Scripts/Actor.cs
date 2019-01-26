@@ -2,19 +2,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Actor : MonoBehaviour
+public class Actor : Revealable
 {
-	public event Action<int> EnergyConsumed = (t) => { };
+	public Ability PrimaryAbility;
 
-	public Ability BasicAbility;
-	
+	public Ability SecondaryAbility;
+
+	public Ability TertiaryAbility;
+
 	public WalkOnGrid WalkOnGrid;
 
 	public IEnumerable<Tile> Path { get; protected set; }
+	public event Action<int> EnergyConsumed = t => { };
 
 	public virtual void Deselect()
 	{
 	}
+
 
 	public virtual void TargetClicked(Tile target)
 	{
@@ -29,32 +33,69 @@ public class Actor : MonoBehaviour
 		EnergyConsumed(amount);
 	}
 
-	public void ActivateBasicAbility(Actor activeActor, GameObject targetObject)
+	public void ActivatePrimaryAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, PrimaryAbilityOnMovementFinished, targetObject);
+	}
+
+	public void ActivateSecondaryAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, SecondaryAbilityOnMovementFinished, targetObject);
+	}
+
+	public void ActivateTertiaryAbility(PlayerActor activeActor, GameObject targetObject)
+	{
+		MoveToTargetObjectThenActivateAbility(activeActor, TertiaryAbilityOnMovementFinished, targetObject);
+	}
+
+	private void MoveToTargetObjectThenActivateAbility(PlayerActor activeActor,
+	                                                   ArrivedAtTargetObjectCallback callbackOnMovementFinished,
+	                                                   GameObject targetObject)
 	{
 		if (activeActor is PlayerMovementController movementActor)
 		{
-			var targetTile = activeActor.WalkOnGrid.Grid[(int)targetObject.transform.position.x, (int)targetObject.transform.position.y];
+			var targetTile = activeActor.WalkOnGrid.Grid[(int) targetObject.transform.position.x,
+			                                             (int) targetObject.transform.position.y];
 			activeActor.TargetClicked(targetTile);
 			activeActor.TargetConfirmed(targetTile);
 
-			//Action action = () => { movementActor.MovementFinished -= action; };
 			Action handler = null;
 			handler = () =>
-			{
-				MovementActorOnMovementFinished(movementActor, targetObject);
-				movementActor.MovementFinished -= handler;
-			};
+			          {
+				          callbackOnMovementFinished(targetObject);
+				          movementActor.MovementFinished -= handler;
+			          };
 
 			movementActor.MovementFinished += handler;
 		}
 	}
 
-	private void MovementActorOnMovementFinished(PlayerMovementController movementActor, GameObject targetObject)
+	private void PrimaryAbilityOnMovementFinished(GameObject targetObject)
 	{
-		if (BasicAbility != null)
+		if (PrimaryAbility != null)
 		{
-			BasicAbility.Do(targetObject);
-			ConsumeEnergy(BasicAbility.EnergyAmount);
+			PrimaryAbility.Do(targetObject);
+			ConsumeEnergy(PrimaryAbility.EnergyAmount);
 		}
 	}
+
+	private void SecondaryAbilityOnMovementFinished(GameObject targetObject)
+	{
+		if (SecondaryAbility != null)
+		{
+			SecondaryAbility.Do(targetObject);
+			ConsumeEnergy(SecondaryAbility.EnergyAmount);
+		}
+	}
+
+	private void TertiaryAbilityOnMovementFinished(GameObject targetObject)
+	{
+		if (TertiaryAbility != null)
+		{
+			TertiaryAbility.Do(targetObject);
+			ConsumeEnergy(SecondaryAbility.EnergyAmount);
+		}
+	}
+
+	private delegate void ArrivedAtTargetObjectCallback(GameObject targetObject);
 }
