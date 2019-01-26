@@ -28,6 +28,11 @@ public static class Extensions
 		}
 	}
 
+	public static void Raise(this Action a)
+	{
+		a?.Invoke();
+	}
+
 	public static void Raise<T>(this Action<T> a, T arg)
 	{
 		a?.Invoke(arg);

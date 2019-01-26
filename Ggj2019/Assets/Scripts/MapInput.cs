@@ -18,17 +18,27 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class MapInput : MonoBehaviour
 {
-	public LayerMask TileLayerMask;
+	public LayerMask InputLayerMask;
 
 	public event Action<GameObject> GameObjectClicked;
+
+	public event Action<GameObject> GameObjectActionCalled;
 
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, TileLayerMask))
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
 			{
 				GameObjectClicked.Raise(hit.collider.gameObject);
+			}
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
+			{
+				GameObjectActionCalled.Raise(hit.collider.gameObject);
 			}
 		}
 	}

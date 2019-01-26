@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -7,8 +8,11 @@ using UnityEngine;
 
 public class PlayerMovementController : Actor
 {
+
+	public event Action MovementFinished;
+	
 	private (int, int) _position;
-	protected Tile _positionTile;
+	public Tile PositionTile { get; protected set; }
 	private int NextWayPointIndex;
 	public float Speed;
 	public Tile StartPosition;
@@ -20,7 +24,7 @@ public class PlayerMovementController : Actor
 		var pos = StartPosition.transform.position;
 		pos.z = -1f;
 		transform.position = pos;
-		_positionTile = StartPosition;
+		PositionTile = StartPosition;
 	}
 
 	// Update is called once per frame
@@ -54,8 +58,7 @@ public class PlayerMovementController : Actor
 			}
 			else
 			{
-				transform.position = targetPosition;
-				HasPath = false;
+				FinishMovement(targetPosition);
 			}
 		}
 		else if (moveVec.magnitude <= 0.005f)
@@ -73,8 +76,7 @@ public class PlayerMovementController : Actor
 			}
 			else
 			{
-				transform.position = targetPosition;
-				HasPath = false;
+				FinishMovement(targetPosition);
 			}
 		}
 		else
@@ -83,9 +85,16 @@ public class PlayerMovementController : Actor
 		}
 	}
 
+	private void FinishMovement(Vector2 targetPosition)
+	{
+		transform.position = targetPosition;
+		HasPath = false;
+		MovementFinished.Raise();
+	}
+
 	protected virtual void UpdateTile(Tile nextPoint)
 	{
-		_positionTile = nextPoint;
+		PositionTile = nextPoint;
 		ConsumeEnergy(1);
 	}
 
@@ -116,7 +125,7 @@ public class PlayerMovementController : Actor
 	public override void TargetClicked(Tile target)
 	{
 		HighlightPath(false);
-		Path = WalkOnGrid.GetPath(_positionTile, target);
+		Path = WalkOnGrid.GetPath(PositionTile, target);
 		HighlightPath(true);
 
 	}

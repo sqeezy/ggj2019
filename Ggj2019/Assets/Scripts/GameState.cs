@@ -35,6 +35,7 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
+		Input.GameObjectActionCalled += InputOnGameObjectActionCalled;
 		CurrentEnergy = StartEnergy;
 		ActiveActor.EnergyConsumed += ReduceEnergy;
 	}
@@ -42,6 +43,18 @@ public class GameState : MonoBehaviour
 	private void ReduceEnergy(int amount)
 	{
 		CurrentEnergy -= amount;
+	}
+
+	private void InputOnGameObjectActionCalled(GameObject obj)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+
+		}
+
+		ActiveActor.ActivateBasicAbility(ActiveActor, obj);
+
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)
