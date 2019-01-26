@@ -19,26 +19,28 @@ public class MapInput : MonoBehaviour
 {
 	private readonly WalkOnGrid _walker = new WalkOnGrid();
 
-	public Map ActiveMap;
+	public GameState GlobalState;
 
 	public PlayerMovementController PlayerMovement;
 
-	private Tile SelectedTile;
 	public LayerMask TileLayerMask;
 
 	private void Update()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			if (PlayerMovement.HasPath) return;
+			if (PlayerMovement.HasPath)
+			{
+				return;
+			}
 
 			RaycastHit hit;
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, TileLayerMask))
 			{
 				var clickedTile = hit.collider.GetComponent<Tile>();
-				if (SelectedTile == null || SelectedTile != clickedTile)
+				if (GlobalState.SelectedTile == null || GlobalState.SelectedTile != clickedTile)
 				{
-					SelectedTile = clickedTile;
+					GlobalState.SelectedTile = clickedTile;
 
 					//TODO: highlight path from WalkOnGrid
 				}
@@ -50,17 +52,17 @@ public class MapInput : MonoBehaviour
 
 					var playerX = (int) PlayerMovement.transform.position.x;
 					var playerY = (int) PlayerMovement.transform.position.y;
-					ActiveMap.Load();
-					var playerTile = ActiveMap.Grid[playerX, playerY];
+					GlobalState.MapState.Load();
+					var playerTile = GlobalState.MapState.Grid[playerX, playerY];
 
-					PlayerMovement.MoveOnPath(_walker.GetPath(ActiveMap.Grid, playerTile, clickedTile));
+					PlayerMovement.MoveOnPath(_walker.GetPath(GlobalState.MapState.Grid, playerTile, clickedTile));
 				}
 			}
 		}
 		else if (Input.GetMouseButtonDown(1))
 		{
 			// Cancels path.
-			SelectedTile = null;
+			GlobalState.SelectedTile = null;
 		}
 	}
 }
