@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovementController))]
 public class Actor : MonoBehaviour
 {
-	private readonly WalkOnGrid _walker = new WalkOnGrid();
+	public WalkOnGrid WalkOnGrid;
 	private PlayerMovementController _movement;
 
 	private void Start()
@@ -21,7 +21,7 @@ public class Actor : MonoBehaviour
 	public void TargetClicked(Tile target)
 	{
 		Tile position = new Tile();
-		Path = _walker.GetPath(position, target);
+		Path = WalkOnGrid.GetPath(position, target);
 	}
 
 	public void TargetConfirmed(Tile tile)

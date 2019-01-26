@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class WalkOnGrid : MonoBehaviour
 {
-	private Tile[,] _grid;
+	public Map Map;
+	public Tile[,] Grid;
 
 	private void Start()
 	{
-		_grid = GetComponent<Map>().Grid;
+		Grid = Map.Grid;
 	}
 
 	public IEnumerable<Tile> GetPath(Tile start, Tile target)
@@ -18,7 +19,7 @@ public class WalkOnGrid : MonoBehaviour
 			return new[] {start};
 		}
 
-		var allTiles = _grid.Flatten().ToArray();
+		var allTiles = Grid.Flatten().ToArray();
 		var distances = allTiles.ToDictionary(t => t, l => int.MaxValue);
 		var bestPrev = allTiles.ToDictionary(t => t, l => (Tile) null);
 		var stillToVisit = new HashSet<Tile>(allTiles);
@@ -32,7 +33,7 @@ public class WalkOnGrid : MonoBehaviour
 			stillToVisit.Remove(nodeWithShortestDistance);
 			var distCandidate = nodeDistance + 1;
 
-			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(_grid).Intersect(stillToVisit))
+			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(Grid).Intersect(stillToVisit))
 			{
 				if (distances[neighbor] > distCandidate)
 				{

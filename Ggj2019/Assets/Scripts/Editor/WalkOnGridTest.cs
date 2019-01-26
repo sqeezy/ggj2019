@@ -16,12 +16,13 @@ namespace Editor
 		[SetUp]
 		public void Setup()
 		{
-			_sut = new WalkOnGrid();
+			_sut = new GameObject().AddComponent<WalkOnGrid>();
 		}
 
 		[TearDown]
 		public void Teardown()
 		{
+			GameObject.DestroyImmediate(_sut.gameObject);
 			foreach (var tile in _grid)
 			{
 				GameObject.DestroyImmediate(tile.gameObject);
@@ -151,7 +152,7 @@ namespace Editor
 
 		private void WhenGetPathIsCalled()
 		{
-			_sut. = _grid;
+			_sut.Grid = _grid;
 			_result = _sut.GetPath(_start, _target);
 		}
 	}
