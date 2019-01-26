@@ -1,16 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-public class WalkOnGrid
+public class WalkOnGrid : MonoBehaviour
 {
-	public IEnumerable<Tile> GetPath(Tile[,] grid, Tile start, Tile target)
+	public Map Map;
+	public Tile[,] Grid;
+
+	private void Start()
+	{
+		Map.Load();
+		Grid = Map.Grid;
+	}
+
+	public IEnumerable<Tile> GetPath(Tile start, Tile target)
 	{
 		if (start == target)
 		{
 			return new[] {start};
 		}
 
-		var allTiles = grid.Flatten().ToArray();
+		var allTiles = Grid.Flatten().ToArray();
 		var distances = allTiles.ToDictionary(t => t, l => int.MaxValue);
 		var bestPrev = allTiles.ToDictionary(t => t, l => (Tile) null);
 		var stillToVisit = new HashSet<Tile>(allTiles);
@@ -24,7 +34,7 @@ public class WalkOnGrid
 			stillToVisit.Remove(nodeWithShortestDistance);
 			var distCandidate = nodeDistance + 1;
 
-			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(grid).Intersect(stillToVisit))
+			foreach (var neighbor in nodeWithShortestDistance.GetNeighbors(Grid).Intersect(stillToVisit))
 			{
 				if (distances[neighbor] > distCandidate)
 				{
@@ -48,33 +58,5 @@ public class WalkOnGrid
 		result.Reverse();
 
 		return result;
-	}
-}
-
-public static class Extensions
-{
-	private static readonly (int, int)[] _directions = {(1, 0), (0, 1), (-1, 0), (0, -1)};
-
-	public static IEnumerable<T> Flatten<T>(this T[,] grid)
-	{
-		foreach (T t in grid)
-		{
-			yield return t;
-		}
-	}
-
-	public static IEnumerable<Tile> GetNeighbors(this Tile tile, Tile[,] grid)
-	{
-		foreach (var (x, y) in _directions)
-		{
-			var newX = tile.X + x;
-			var newY = tile.Y + y;
-			var xInBounds = newX >= 0 && newX < grid.GetLength(0);
-			var yInBounds = newY >= 0 && newY < grid.GetLength(1);
-			if (xInBounds && yInBounds && grid[newX, newY].Walkable)
-			{
-				yield return grid[newX, newY];
-			}
-		}
 	}
 }

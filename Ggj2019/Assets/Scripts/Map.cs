@@ -15,7 +15,15 @@ public class Map : MonoBehaviour
 
 	public void Store(Tile[,] grid, int xWidth, int yWidth)
 	{
-		_flattenedGrid = grid.Flatten().ToArray();
+		_flattenedGrid = new Tile[xWidth*yWidth];
+		for (int x = 0; x < xWidth; x++)
+		{
+			for (int y = 0; y < yWidth; y++)
+			{
+				_flattenedGrid[y * _xWidth + x] = grid[x, y];
+			}
+		}
+
 		_xWidth = xWidth;
 		_yWidth = yWidth;
 	}
@@ -27,7 +35,7 @@ public class Map : MonoBehaviour
 		{
 			for (int y = 0; y < _yWidth; y++)
 			{
-				Grid[x, y] = _flattenedGrid[x * _xWidth + y];
+				Grid[x, y] = _flattenedGrid[y * _xWidth + x];
 			}
 		}
 	}
