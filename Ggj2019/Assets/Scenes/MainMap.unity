@@ -11527,13 +11527,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b9b82e6836b6847912f53fd32f9a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RobotActor: {fileID: 1360364367}
-  CowboyActor: {fileID: 729518919}
   ActiveActor: {fileID: 729518919}
+  CowboyActor: {fileID: 729518919}
   Input: {fileID: 662391303}
   MapState: {fileID: 1999206083}
-  UI: {fileID: 1584654048}
+  RobotActor: {fileID: 1360364367}
   StartEnergy: 300
+  UI: {fileID: 1584654048}
 --- !u!4 &565491467
 Transform:
   m_ObjectHideFlags: 0
@@ -33416,7 +33416,7 @@ PrefabInstance:
     - target: {fileID: 6663496139405988946, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6663496139405988910, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
