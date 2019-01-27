@@ -30,6 +30,13 @@ public class PushAbility : Ability
 				AnimationController.BasicAbility();
 			}
 		}
+		else
+		{
+			if (AnimationController != null)
+			{
+				AnimationController.BasicAbility();
+			}
+		}
 	}
 
 	private IEnumerator WaitForPush(PushableActor actor, Vector3 direction)
