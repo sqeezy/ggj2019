@@ -57,7 +57,7 @@ public class SmallRobot : PlayerActor
 			var currentDirection = _targetPosition - transform.position;
 			var currentDistance = currentDirection.magnitude;
 
-			if (currentDistance <= 0.1f)
+			if (currentDistance <= 0.3f)
 			{
 				if (_attacking)
 				{
