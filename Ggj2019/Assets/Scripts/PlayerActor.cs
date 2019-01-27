@@ -128,6 +128,7 @@ public class PlayerActor : PlayerMovementController
 
 	public IEnumerator IncreaseBlizzard()
 	{
+		UI.gameObject.SetActive(false);
 		float time = 4;
 		while (time>=0)
 		{
