@@ -2,6 +2,7 @@
 {
 	public string CarryAnimationName;
 	public string IdleAnimationName;
+	public bool UpgradesPlayerActors;
 	
 	public void PickUp()
 	{
