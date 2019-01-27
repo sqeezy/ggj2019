@@ -145,6 +145,10 @@ MonoBehaviour:
   BlocksMovement: 0
   Speed: 0.5
   StartPosition: {fileID: 0}
+  CowboyUpgradeParticleEffect: {fileID: 0}
+  RobotUpgradeParticleEffect: {fileID: 0}
+  RobotSprite: {fileID: 0}
+  CowboySortingLayer: 0
   ActiveUpgrade: 0
   AnimationController: {fileID: 2040450052}
   CarriedPickupableActor: {fileID: 0}
@@ -444,6 +448,7 @@ Transform:
   - {fileID: 7320130775631734461}
   - {fileID: 2650529647405043391}
   - {fileID: 2040450045}
+  - {fileID: 2298542869965653451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -479,6 +484,10 @@ MonoBehaviour:
   BlocksMovement: 0
   Speed: 2
   StartPosition: {fileID: 0}
+  CowboyUpgradeParticleEffect: {fileID: 0}
+  RobotUpgradeParticleEffect: {fileID: 0}
+  RobotSprite: {fileID: 0}
+  CowboySortingLayer: 0
   ActiveUpgrade: 0
   AnimationController: {fileID: 3893128180708048}
   CarriedPickupableActor: {fileID: 0}
@@ -566,4 +575,80 @@ MonoBehaviour:
   CarryAnimationName: CarryBox
   IdleAnimationName: IdleBox
   UpgradesPlayerActors: 0
+  UpgradeShipActors: 0
   AnimationController: {fileID: 3893128180708048}
+--- !u!1001 &1423841065004026123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8934023106256992559}
+    m_Modifications:
+    - target: {fileID: 874946721180978375, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_Name
+      value: robotupgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9bc489993c01eef48b48a8fb0190dd63, type: 3}
+--- !u!4 &2298542869965653451 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 874946721180978368, guid: 9bc489993c01eef48b48a8fb0190dd63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1423841065004026123}
+  m_PrefabAsset: {fileID: 0}

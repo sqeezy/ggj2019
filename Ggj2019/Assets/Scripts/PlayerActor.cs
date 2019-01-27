@@ -13,6 +13,13 @@ public enum UpgradeState
 
 public class PlayerActor : PlayerMovementController
 {
+	public GameObject CowboyUpgradeParticleEffect;
+	public GameObject RobotUpgradeParticleEffect;
+
+	public SpriteRenderer RobotSprite;
+	public int CowboySortingLayer;
+	private int _originalRobotSortingLayer;
+
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
@@ -27,6 +34,15 @@ public class PlayerActor : PlayerMovementController
 	public MainUI UI;
 	public event Action EnteredHomeWithUpgrade;
 	public event Action EnteredHomeWithShipUpgrades;
+
+	private void Start()
+	{
+		base.Start();
+		if (IsRobot)
+		{
+			_originalRobotSortingLayer = RobotSprite.sortingOrder;
+		} 
+	}
 
 	private void FixedUpdate()
 	{
@@ -62,6 +78,14 @@ public class PlayerActor : PlayerMovementController
 				HasPath = false;
 				WaypointList = new Tile[0];
 				StopAllCoroutines();
+				if (IsRobot)
+				{
+					if(GetComponent<BoxCollider>() is BoxCollider collider)
+					{
+						collider.size = new Vector3(1f, 1f, .5f);
+					}
+					RobotSprite.sortingOrder = CowboySortingLayer - 1;
+				}
 				enabled = false;
 				if (!IsRobot)
 				{
@@ -92,7 +116,6 @@ public class PlayerActor : PlayerMovementController
 				AnimationController.Reset();
 				AnimationController.Idle();
 				EnteredHomeWithShipUpgrades.Raise();
-				EnteredHomeWithUpgrade.Raise();
 			}
 		}
 		else
@@ -105,6 +128,7 @@ public class PlayerActor : PlayerMovementController
 
 	public IEnumerator IncreaseBlizzard()
 	{
+		UI.gameObject.SetActive(false);
 		float time = 4;
 		while (time>=0)
 		{
@@ -141,6 +165,15 @@ public class PlayerActor : PlayerMovementController
 	{
 		CurrentEnergy = FullEnergy;
 		StopAllCoroutines();
+		if (IsRobot)
+		{
+			// reset sorting layer and z-pos.
+			if (GetComponent<BoxCollider>() is BoxCollider collider)
+			{
+				collider.size = new Vector3(1f, 1f, 1f);
+			}
+			RobotSprite.sortingOrder = _originalRobotSortingLayer;
+		}
 		enabled = true;
 		UpdateEnergyUi();
 	}
@@ -157,10 +190,38 @@ public class PlayerActor : PlayerMovementController
 				{
 					robot.gameObject.SetActive(true);
 				}
+				else if (IsRobot)
+				{
+					if (RobotUpgradeParticleEffect != null)
+					{
+						RobotUpgradeParticleEffect.SetActive(true);
+					}
+				}
+				else
+				{
+					if (CowboyUpgradeParticleEffect != null)
+					{
+						CowboyUpgradeParticleEffect.SetActive(true);
+					}
+				}
 				break;
 			case UpgradeState.Upgrade1:
 				AnimationController.Upgrade();
 				ActiveUpgrade = UpgradeState.Upgrade2;
+				if (IsRobot)
+				{
+					if (RobotUpgradeParticleEffect != null)
+					{
+						RobotUpgradeParticleEffect.SetActive(true);
+					}
+				}
+				else
+				{
+					if (CowboyUpgradeParticleEffect != null)
+					{
+						CowboyUpgradeParticleEffect.SetActive(true);
+					}
+				}
 				break;
 			case UpgradeState.Upgrade2:
 				break;
