@@ -12,6 +12,8 @@ public class MapInput : MonoBehaviour
 
 	public event Action<GameObject> GameObjectPickUpActionCalled;
 
+	public event Action<GameObject> RobotRock;
+
 	public event Action DropActionCalled;
 
 	private void Update()
@@ -32,9 +34,18 @@ public class MapInput : MonoBehaviour
 			}
 		}
 
+
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			DropActionCalled.Raise();
+			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask) &&
+			    hit.collider.GetComponent<Tile>() == null)
+			{
+				RobotRock.Raise(hit.collider.gameObject);
+			}
+			else
+			{
+				DropActionCalled.Raise();
+			}
 		}
 	}
 }
