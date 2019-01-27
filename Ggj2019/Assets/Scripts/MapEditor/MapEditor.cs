@@ -115,7 +115,20 @@ public class MapEditor : EditorWindow
 
 			Selection.objects = selectedTile.ToArray();
 		}
-	}
+
+        if (GUILayout.Button("Fix"))
+        {
+            var tiles = Object.FindObjectOfType<Map>().GetComponentsInChildren<Tile>();
+            foreach (var tile in tiles) {
+                tile.X = (int)tile.transform.position.x;
+                tile.Y = (int)tile.transform.position.y;
+                EditorUtility.SetDirty(tile);
+                
+            }
+        }
+
+
+        }
 
 	private void BuildMap()
 	{
