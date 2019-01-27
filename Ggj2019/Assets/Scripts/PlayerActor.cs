@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = System.Object;
 
 public enum UpgradeState
 {
@@ -87,6 +90,22 @@ public class PlayerActor : PlayerMovementController
 		}
 
 		UpdateEnergyUi();
+	}
+
+	public IEnumerator IncreaseBlizzard()
+	{
+		float time = 4;
+		while (time>=0)
+		{
+			time -= 0.05f;
+			var system = Blizzard.GetComponent<ParticleSystem>();
+			system.emissionRate += 1000;
+			system.startSize += 0.005f;
+			yield return new WaitForSeconds(0.05f);
+			
+		}
+
+		SceneManager.LoadScene("MainMap");
 	}
 
 	private void UpdateEnergyUi()

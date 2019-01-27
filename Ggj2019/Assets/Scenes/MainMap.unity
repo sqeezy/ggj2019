@@ -11504,7 +11504,7 @@ MonoBehaviour:
   Input: {fileID: 662391303}
   MapState: {fileID: 1999206083}
   UI: {fileID: 1584654048}
-  StartEnergy: 0
+  StartEnergy: 99
 --- !u!4 &565491467
 Transform:
   m_ObjectHideFlags: 0
