@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CustomEditor(typeof(Map))]
 [CanEditMultipleObjects]
-public class TileEditor : Editor
+public class TileEditor : UnityEditor.Editor
 {
 	public enum PaintMode
 	{
