@@ -10145,6 +10145,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 1265554970}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: StartPosition
@@ -19353,7 +19358,7 @@ Transform:
   - {fileID: 118195001}
   - {fileID: 95219772}
   m_Father: {fileID: 1999206084}
-  m_RootOrder: 456
+  m_RootOrder: 454
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &923101510
 PrefabInstance:
@@ -26876,6 +26881,81 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1260091718}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1265554969
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5966564851271065916, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_Name
+      value: WeatherController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.66499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.275457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.359375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6afe0408c72814340848d0faf1d7b7a1, type: 3}
+--- !u!1 &1265554970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1265554969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1268603548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31895,6 +31975,10 @@ PrefabInstance:
       propertyPath: CurrentEnergy
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 1265554970}
     - target: {fileID: 5245212956927963699, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37981,7 +38065,7 @@ Transform:
   m_Children:
   - {fileID: 876464675}
   m_Father: {fileID: 1999206084}
-  m_RootOrder: 455
+  m_RootOrder: 456
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804819576
 PrefabInstance:
@@ -41434,9 +41518,9 @@ Transform:
   - {fileID: 688862470}
   - {fileID: 61100858}
   - {fileID: 963270509}
+  - {fileID: 921644097}
   - {fileID: 2113061806}
   - {fileID: 1801684720}
-  - {fileID: 921644097}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43784,7 +43868,7 @@ Transform:
   m_Children:
   - {fileID: 1694497333}
   m_Father: {fileID: 1999206084}
-  m_RootOrder: 454
+  m_RootOrder: 455
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2114575469
 PrefabInstance:
