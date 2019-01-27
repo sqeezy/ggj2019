@@ -164,6 +164,7 @@ public class PlayerActor : PlayerMovementController
 	public void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
+		UI.gameObject.SetActive(true);
 		StopAllCoroutines();
 		if (IsRobot)
 		{
