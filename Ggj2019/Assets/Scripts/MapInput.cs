@@ -8,7 +8,7 @@ public class MapInput : MonoBehaviour
 
 	public event Action<GameObject> GameObjectClicked;
 
-	public event Action<GameObject> GameObjectPushActionCalled;
+	public event Action<GameObject> GameObjectPickupActionCalled;
 
 	public event Action<GameObject> GameObjectPickUpActionCalled;
 
@@ -28,7 +28,7 @@ public class MapInput : MonoBehaviour
 		{
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out var hit, 100f, InputLayerMask))
 			{
-				GameObjectPushActionCalled.Raise(hit.collider.gameObject);
+				GameObjectPickupActionCalled.Raise(hit.collider.gameObject);
 			}
 		}
 

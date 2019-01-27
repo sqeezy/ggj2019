@@ -37,6 +37,11 @@ public class CharacterAnimation : MonoBehaviour
 	{
 		AnimationController.SetTrigger(AnimationData.SecondaryAbility);
 	}
+	
+	public void ThirdAbility()
+	{
+		AnimationController.SetTrigger(AnimationData.ThirdAbility);
+	}
 
 	public void Reset()
 	{
@@ -68,6 +73,7 @@ public class CharacterAnimation : MonoBehaviour
 	{
 		public string BasicAbility;
 		public string SecondaryAbility;
+		public string ThirdAbility;
 		public string Move;
 		public string Idle;
 	}
