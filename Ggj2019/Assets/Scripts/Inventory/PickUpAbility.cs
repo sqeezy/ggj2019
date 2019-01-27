@@ -11,12 +11,14 @@ public class PickUpAbility : Ability
 		if (GetComponent<PlayerActor>().CarriedPickupableActor == null)
 		{
 			var pickupable = targetPickupable.GetComponent<PickupableActor>();
-			if ((pickupable.transform.position - transform.position).magnitude > 1f)
-			{
-				return;
-			}
+			
 			if (pickupable != null && pickupable.gameObject != gameObject)
 			{
+				if ((pickupable.transform.position - transform.position).magnitude > 1f)
+				{
+					return;
+				}
+				
 				pickupable.PositionTile.Walkable = true;
 				pickupable.PickUp();
 				GetComponent<PlayerActor>().CarriedPickupableActor = pickupable;
