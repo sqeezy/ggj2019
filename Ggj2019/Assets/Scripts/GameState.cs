@@ -74,7 +74,7 @@ public class GameState : MonoBehaviour
 			{
 				return;
 			}
-
+			/* //Confirmation.
 			if (SelectedTile == tile)
 			{
 				ActiveActor.TargetConfirmed(tile);
@@ -84,6 +84,10 @@ public class GameState : MonoBehaviour
 				SelectedTile = tile;
 				ActiveActor.TargetClicked(tile);
 			}
+			*/
+			ActiveActor.TargetClicked(tile);
+			ActiveActor.TargetConfirmed(tile);
+
 		}
 		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
