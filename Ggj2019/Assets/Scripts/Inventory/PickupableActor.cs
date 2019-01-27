@@ -3,7 +3,8 @@
 	public string CarryAnimationName;
 	public string IdleAnimationName;
 	public bool UpgradesPlayerActors;
-	
+	public bool UpgradeShipActors; 
+
 	public virtual void PickUp()
 	{
 		gameObject.SetActive(false);

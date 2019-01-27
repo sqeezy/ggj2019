@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
+	public List<GameObject> HomeSweetHome;
+	public int CurrentUpgradeStep;
 	public PlayerActor ActiveActor;
 	public PlayerActor CowboyActor;
 	public MapInput Input;
@@ -19,8 +22,19 @@ public class GameState : MonoBehaviour
 		Input.DropActionCalled += InputDropActionCalled;
 		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
+		RobotActor.EnteredHomeWithShipUpgrades += OnEnteredHomeWithShipUpgrades;
+		CowboyActor.EnteredHomeWithShipUpgrades += OnEnteredHomeWithShipUpgrades;
 		CurrentEnergy = StartEnergy;
 		ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void OnEnteredHomeWithShipUpgrades()
+	{
+		CurrentUpgradeStep++;
+		for (int i = 0; i < CurrentUpgradeStep && i < HomeSweetHome.Count; i++)
+		{
+			HomeSweetHome[i].SetActive(true);
+		}
 	}
 
 	private void InputDropActionCalled(GameObject obj)

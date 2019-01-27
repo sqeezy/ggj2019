@@ -26,6 +26,7 @@ public class PlayerActor : PlayerMovementController
 
 	public MainUI UI;
 	public event Action EnteredHomeWithUpgrade;
+	public event Action EnteredHomeWithShipUpgrades;
 
 	private void FixedUpdate()
 	{
@@ -81,6 +82,16 @@ public class PlayerActor : PlayerMovementController
 				Destroy(tmp.gameObject);
 				AnimationController.Reset();
 				AnimationController.Idle();
+				EnteredHomeWithUpgrade.Raise();
+			}
+
+			if (CarriedPickupableActor != null && CarriedPickupableActor.UpgradeShipActors)
+			{
+				var tmp = CarriedPickupableActor;
+				Destroy(tmp.gameObject);
+				AnimationController.Reset();
+				AnimationController.Idle();
+				EnteredHomeWithShipUpgrades.Raise();
 				EnteredHomeWithUpgrade.Raise();
 			}
 		}
