@@ -1370,12 +1370,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -1402,6 +1396,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -9297,6 +9297,11 @@ PrefabInstance:
       propertyPath: Y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2587457252358589567, guid: b1c1933bbb6cfa84d8b400f5b34cc77b,
+        type: 3}
+      propertyPath: Walkable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c1933bbb6cfa84d8b400f5b34cc77b, type: 3}
 --- !u!4 &460761801 stripped
@@ -10189,6 +10194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CowboySortingLayer
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: Speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
@@ -13885,12 +13895,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -13917,6 +13921,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -14004,12 +14014,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -14036,6 +14040,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -16785,12 +16795,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -16817,6 +16821,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -25770,12 +25780,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0d620874702c31f4487bc71c4a71e8c6,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -25814,6 +25818,12 @@ PrefabInstance:
       propertyPath: IdleAnimationName
       value: IdleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0d620874702c31f4487bc71c4a71e8c6,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -31843,42 +31853,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cowboy
       objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: WalkOnGrid
-      value: 
-      objectReference: {fileID: 507876546}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: StartPosition
-      value: 
-      objectReference: {fileID: 2000629155}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: Speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1584654048}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: FullEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: MaxEnergy
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: CurrentEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: Blizzard
-      value: 
-      objectReference: {fileID: 1265554970}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: CowboyUpgradeParticleEffect
-      value: 
-      objectReference: {fileID: 1674583204}
     - target: {fileID: 5245212956927963699, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31934,6 +31908,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: WalkOnGrid
+      value: 
+      objectReference: {fileID: 507876546}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: StartPosition
+      value: 
+      objectReference: {fileID: 2000629155}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1584654048}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: FullEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: MaxEnergy
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: CurrentEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 1265554970}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: CowboyUpgradeParticleEffect
+      value: 
+      objectReference: {fileID: 1674583204}
     - target: {fileID: 8581749601340397818, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: Upgrade1Controller
@@ -33612,6 +33622,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 429
+      objectReference: {fileID: 0}
     - target: {fileID: 6663496139802595997, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -33661,21 +33686,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: -18.527344
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 429
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0001a6c56bdee4926b1af192a880366a, type: 3}
@@ -36593,12 +36603,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -36625,6 +36629,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -37723,6 +37733,11 @@ PrefabInstance:
       propertyPath: Y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5459985477366157991, guid: f2bb138ae01df564f981860d465cfced,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7121536914770427189, guid: f2bb138ae01df564f981860d465cfced,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37777,11 +37792,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5459985477366157991, guid: f2bb138ae01df564f981860d465cfced,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2bb138ae01df564f981860d465cfced, type: 3}
@@ -37857,12 +37867,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -37889,6 +37893,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -38134,12 +38144,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 442d4fa20d72b624ab00708918ded9b7,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -38178,6 +38182,12 @@ PrefabInstance:
       propertyPath: IdleAnimationName
       value: IdleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 442d4fa20d72b624ab00708918ded9b7,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -40501,12 +40511,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: dbcec72ff9aa8e644b8cd9727782c664,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -40545,6 +40549,12 @@ PrefabInstance:
       propertyPath: IdleAnimationName
       value: IdleBox
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbcec72ff9aa8e644b8cd9727782c664,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
