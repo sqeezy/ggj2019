@@ -54,10 +54,15 @@ public class PlayerActor : PlayerMovementController
 			CurrentEnergy--;
 			if (CurrentEnergy <= 0)
 			{
+
 				HasPath = false;
 				WaypointList = new Tile[0];
 				StopAllCoroutines();
 				enabled = false;
+				if (!IsRobot)
+				{
+					StartCoroutine(IncreaseBlizzard());
+				}
 			}
 		}
 
