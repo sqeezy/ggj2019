@@ -3,13 +3,14 @@
 	public string CarryAnimationName;
 	public string IdleAnimationName;
 	
-	public void PickUp()
+	public virtual void PickUp()
 	{
-		// gameobject -> inactive
-		// store 
+		gameObject.SetActive(false);
+		
 	}
 
-	public void Drop()
+	public virtual void Drop()
 	{
+		gameObject.SetActive(true);
 	}
 }

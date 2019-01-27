@@ -34,7 +34,7 @@ public class GameState : MonoBehaviour
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
-		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
+		Input.GameObjectPickupActionCalled += InputOnGameObjectPickupActionCalled;
 		Input.DropActionCalled += InputDropActionCalled;
 		CurrentEnergy = StartEnergy;
 	}
@@ -56,14 +56,14 @@ public class GameState : MonoBehaviour
 		UI.SetShipBar(CurrentEnergy);
 	}
 
-	private void InputOnGameObjectPushActionCalled(GameObject obj)
+	private void InputOnGameObjectPickupActionCalled(GameObject obj)
 	{
 		if (ActiveActor == null)
 		{
 			return;
 		}
 
-		ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
+		ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
 	}
 
 	private void InputOnGameObjectClicked(GameObject obj)
@@ -100,14 +100,14 @@ public class GameState : MonoBehaviour
 			ActiveActor = actor;
 			ActiveActor.EnergyConsumed += ReduceEnergy;
 		}
-		else if (obj.GetComponent<PickupableActor>())
+		else if (obj.GetComponent<PushableActor>())
 		{
 			if (ActiveActor == null)
 			{
 				return;
 			}
 
-			ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
+			ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
 		}
 	}
 

@@ -14,7 +14,7 @@ public class PickUpAbility : Ability
 			if (pickupable != null)
 			{
 				pickupable.PositionTile.Walkable = true;
-				pickupable.gameObject.SetActive(false);
+				pickupable.PickUp();
 				GetComponent<PlayerActor>().CarriedPickupableActor = pickupable;
 				AnimationController.AnimationData.Move = pickupable.CarryAnimationName;
 				AnimationController.AnimationData.Idle = pickupable.IdleAnimationName;
