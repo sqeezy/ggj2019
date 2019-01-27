@@ -5,7 +5,8 @@ public class PushableActor : PlayerMovementController
 	public Animator AnimationController;
 	public void Push(Vector3 direction) 
 	{
-		var target = new Vector2Int(PositionTile.X + (int) direction.x, PositionTile.Y + (int) direction.y);
+		var directionNormalized = direction.normalized;
+		var target = new Vector2Int(PositionTile.X + (int) directionNormalized.x, PositionTile.Y + (int) directionNormalized.y);
 		var targetTile = WalkOnGrid.Grid[target.x, target.y];
 		TargetClicked(targetTile);
 		TargetConfirmed(targetTile);
