@@ -44,7 +44,8 @@ public class WalkOnGrid : MonoBehaviour
 
 		var result = new List<Tile>();
 
-		var targetReached = bestPrev[target] != null;
+		//var targetReached = bestPrev.TryGetValue(target, out var _);
+		var targetReached = bestPrev.ContainsKey(target) && bestPrev[target] != null;
 		if (targetReached)
 		{
 			result = BacktrackFromTarget(target, bestPrev);
