@@ -11,5 +11,5 @@ action "GitHub Action for Docker" {
     BUILD_TARGET = "WebGl"
     IMAGE_NAME = "gableroux/unity3d:2018.3.2f1"
   }
-  runs = "chmod +x ./ci/docker_build.sh"
+  runs = "docker run -e BUILD_NAME -e UNITY_LICENSE_CONTENT -e BUILD_TARGET -e UNITY_USERNAME -e UNITY_PASSWORD -w /project/  -v $(pwd):/project/ $IMAGE_NAME /bin/bash -c \"/project/ci/before_script.sh && /project/ci/build.sh\""
 }
