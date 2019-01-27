@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-	private Tile _selectedTile;
+	public event Action<Tile, Tile> SelectedTileChanged;
+	
 	public PlayerActor ActiveActor;
 	public MapInput Input;
 	public Map MapState;
+	public MainUI UI;
 
 	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
 
+	private Tile _selectedTile;
 
 	public Tile SelectedTile
 	{
@@ -32,7 +35,6 @@ public class GameState : MonoBehaviour
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
-		Input.GameObjectPickUpActionCalled += InputOnGameObjectPickUpActionCalled;
 		Input.DropActionCalled += InputDropActionCalled;
 		CurrentEnergy = StartEnergy;
 	}
@@ -47,19 +49,11 @@ public class GameState : MonoBehaviour
 		ActiveActor.ActivateTertiaryAbility(ActiveActor, ActiveActor.PositionTile.gameObject);
 	}
 
-	private void InputOnGameObjectPickUpActionCalled(GameObject obj)
-	{
-		if (ActiveActor == null)
-		{
-			return;
-		}
-
-		ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
-	}
-
+	
 	private void ReduceEnergy(int amount)
 	{
 		CurrentEnergy -= amount;
+		UI.SetShipBar(CurrentEnergy);
 	}
 
 	private void InputOnGameObjectPushActionCalled(GameObject obj)
@@ -80,7 +74,7 @@ public class GameState : MonoBehaviour
 			{
 				return;
 			}
-
+			/* //Confirmation.
 			if (SelectedTile == tile)
 			{
 				ActiveActor.TargetConfirmed(tile);
@@ -90,6 +84,10 @@ public class GameState : MonoBehaviour
 				SelectedTile = tile;
 				ActiveActor.TargetClicked(tile);
 			}
+			*/
+			ActiveActor.TargetClicked(tile);
+			ActiveActor.TargetConfirmed(tile);
+
 		}
 		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
@@ -102,7 +100,16 @@ public class GameState : MonoBehaviour
 			ActiveActor = actor;
 			ActiveActor.EnergyConsumed += ReduceEnergy;
 		}
+		else if (obj.GetComponent<PickupableActor>())
+		{
+			if (ActiveActor == null)
+			{
+				return;
+			}
+
+			ActiveActor.ActivateSecondaryAbility(ActiveActor, obj);
+		}
 	}
 
-	public event Action<Tile, Tile> SelectedTileChanged;
+	
 }
