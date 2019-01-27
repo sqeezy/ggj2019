@@ -1,18 +1,15 @@
-using System;
-using DefaultNamespace;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-	public PlayerActor RobotActor;
-	public PlayerActor CowboyActor;
-	
 	public PlayerActor ActiveActor;
+	public PlayerActor CowboyActor;
 	public MapInput Input;
 	public Map MapState;
-	public MainUI UI;
+	public PlayerActor RobotActor;
 
 	public int StartEnergy;
+	public MainUI UI;
 	public int CurrentEnergy { get; set; }
 
 	private void Start()
@@ -24,28 +21,31 @@ public class GameState : MonoBehaviour
 		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CurrentEnergy = StartEnergy;
-        ActiveActor.EnergyConsumed += ReduceEnergy;
+		ActiveActor.EnergyConsumed += ReduceEnergy;
 	}
 
 	private void InputOnRobotRock(GameObject obj)
 	{
-		if(ActiveActor.GetComponentInChildren<SmallRobot>() is SmallRobot robi)
-		{
-			robi.BiteOrSteal(ActiveActor, obj);
-		}
 	}
 
-	private void InputDropActionCalled()
+	private void InputDropActionCalled(GameObject obj)
 	{
 		if (ActiveActor == null)
 		{
 			return;
 		}
 
-		ActiveActor.ActivateTertiaryAbility(ActiveActor, ActiveActor.PositionTile.gameObject);
+		if (ActiveActor.GetComponentInChildren<SmallRobot>() is SmallRobot robi)
+		{
+			robi.BiteOrSteal(ActiveActor, obj);
+		}
+		else
+		{
+			ActiveActor.ActivateTertiaryAbility(ActiveActor, ActiveActor.PositionTile.gameObject);
+		}
 	}
 
-	
+
 	private void ReduceEnergy(int amount)
 	{
 		CurrentEnergy -= amount;
@@ -64,8 +64,6 @@ public class GameState : MonoBehaviour
 
 	private void InputOnGameObjectClicked(GameObject obj)
 	{
-
-
 		if (obj.GetComponent<Tile>() is Tile tile)
 		{
 			ClickTileOnActiveActor(tile);
@@ -124,5 +122,4 @@ public class GameState : MonoBehaviour
 			RobotActor.Upgrade();
 		}
 	}
-
 }
