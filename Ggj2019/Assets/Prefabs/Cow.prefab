@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1495146263308270695}
   - component: {fileID: 1246240776006047290}
   - component: {fileID: 1937191074}
-  - component: {fileID: 1937191075}
   m_Layer: 18
   m_Name: Cow
   m_TagString: Untagged
@@ -148,25 +147,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1937191075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937191073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71c89d2676514982856f04c376eaa24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrimaryAbility: {fileID: 0}
-  SecondaryAbility: {fileID: 0}
-  TertiaryAbility: {fileID: 0}
-  WalkOnGrid: {fileID: 0}
-  BlocksMovement: 1
-  Speed: 0
-  StartPosition: {fileID: 0}
-  CarryAnimationName: CarryBox
-  IdleAnimationName: IdleBox
-  UpgradesPlayerActors: 0
