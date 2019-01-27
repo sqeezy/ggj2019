@@ -1,4 +1,4 @@
-# A lonely cowboy - Alone
+# A Lonely Cowboy - **Alone**
 
 ... far away from home. Survival puzzle game - a lonely cowboy crashes on a frozen planet. He is alone in a hostile environment. Just with his Robot - and has to build himself a home.
 
