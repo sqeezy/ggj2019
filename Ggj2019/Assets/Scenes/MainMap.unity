@@ -10108,6 +10108,11 @@ PrefabInstance:
       propertyPath: CurrentEnergy
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 867864565}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: StartPosition
