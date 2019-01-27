@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Walkable: 0
-  X: 0
-  Y: 0
+  X: 16
+  Y: 6
 --- !u!65 &308926261
 BoxCollider:
   m_ObjectHideFlags: 0
