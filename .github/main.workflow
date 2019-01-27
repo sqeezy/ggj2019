@@ -5,7 +5,11 @@ workflow "Build on push" {
 
 action "GitHub Action for Docker" {
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
-  secrets = ["UNITY_USERNAME", "UNITY_PASSWORD"]
+  secrets = [
+    "UNITY_PASSWORD",
+    "UNITY_LICENSE_CONTENT",
+    "UNITY_USERNAME",
+  ]
   env = {
     BUILD_NAME = "GGJ2019-Alone"
     BUILD_TARGET = "WebGl"
