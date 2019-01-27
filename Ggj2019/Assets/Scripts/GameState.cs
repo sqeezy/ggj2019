@@ -42,6 +42,7 @@ public class GameState : MonoBehaviour
 		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CurrentEnergy = StartEnergy;
+        ActiveActor.EnergyConsumed += ReduceEnergy;
 	}
 
 	private void InputDropActionCalled()
@@ -58,7 +59,7 @@ public class GameState : MonoBehaviour
 	private void ReduceEnergy(int amount)
 	{
 		CurrentEnergy -= amount;
-		UI.SetShipBar(CurrentEnergy);
+		UI.SetShipBar(CurrentEnergy, StartEnergy);
 	}
 
 	private void InputOnGameObjectPickupActionCalled(GameObject obj)

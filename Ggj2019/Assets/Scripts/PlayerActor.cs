@@ -70,11 +70,11 @@ public class PlayerActor : PlayerMovementController
 	{
 		if (IsRobot)
 		{
-			UI.SetBlueBar(CurrentEnergy);
+			UI.SetBlueBar(CurrentEnergy, FullEnergy);
 		}
 		else
 		{
-			UI.SetRedBar(CurrentEnergy);
+			UI.SetRedBar(CurrentEnergy, FullEnergy);
 		}
 	}
 
