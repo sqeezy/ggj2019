@@ -23,6 +23,7 @@ public class PickupableRobot : PickupableActor
 	public override void Drop()
 	{
 		base.Drop();
+		
 		AnimationController.ThirdAbility();
 	}
 }

@@ -11,12 +11,12 @@ public class PlayerMovementController : Actor
 	private int NextWayPointIndex;
 	public float Speed;
 	public Tile StartPosition;
-	private Tile[] WaypointList;
+	protected Tile[] WaypointList;
 
 	public bool HasPath
 	{
 		get => _hasPath;
-		private set
+		protected set
 		{
 			_hasPath = value;
 			OnHasPathUpdated();

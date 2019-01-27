@@ -50,6 +50,13 @@ public class PlayerActor : PlayerMovementController
 		if (nextPoint != PositionTile)
 		{
 			CurrentEnergy--;
+			if (CurrentEnergy <= 0)
+			{
+				HasPath = false;
+				WaypointList = new Tile[0];
+				StopAllCoroutines();
+				enabled = false;
+			}
 		}
 
 		base.UpdateTile(nextPoint);
@@ -88,9 +95,11 @@ public class PlayerActor : PlayerMovementController
 		FullEnergy = Math.Min(FullEnergy + 8, MaxEnergy);
 	}
 
-	private void RefillToFull()
+	public void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
+		enabled = true;
+		UpdateEnergyUi();
 	}
 
 	public void Upgrade()
@@ -109,5 +118,10 @@ public class PlayerActor : PlayerMovementController
 			case UpgradeState.Upgrade2:
 				break;
 		}
+	}
+
+	public void StopMovement()
+	{
+		HasPath = false;
 	}
 }

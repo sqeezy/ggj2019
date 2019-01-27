@@ -10093,6 +10093,21 @@ PrefabInstance:
       propertyPath: IsRobot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: FullEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: MaxEnergy
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: CurrentEnergy
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: StartPosition
@@ -15271,18 +15286,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 739510123}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &743313843 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2587457252358589567, guid: f2bb138ae01df564f981860d465cfced,
-    type: 3}
-  m_PrefabInstance: {fileID: 83084859}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952756a92182eb5439dbb78fed3df8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &746146686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16608,7 +16611,7 @@ PrefabInstance:
     - target: {fileID: 1102278286569820083, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1102278286569820083, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
@@ -16638,7 +16641,7 @@ PrefabInstance:
     - target: {fileID: 1102278286569820083, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 453
+      value: 451
       objectReference: {fileID: 0}
     - target: {fileID: 1102278286569820083, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
@@ -16674,7 +16677,7 @@ PrefabInstance:
     - target: {fileID: 488304466, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
       propertyPath: StartPosition
       value: 
-      objectReference: {fileID: 743313843}
+      objectReference: {fileID: 1686093800}
     - target: {fileID: 488304466, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
       propertyPath: WalkOnGrid
       value: 
@@ -31023,6 +31026,18 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1584654048}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: FullEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: MaxEnergy
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: CurrentEnergy
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8581749601340397818, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: Upgrade1Controller
@@ -35206,6 +35221,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1685277132}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1686093800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2587457252358589567, guid: 6e808aa8817285847b440f19399a1a8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1700725601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952756a92182eb5439dbb78fed3df8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1687010824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35435,7 +35462,7 @@ PrefabInstance:
     - target: {fileID: 2587457252358589566, guid: 6e808aa8817285847b440f19399a1a8e,
         type: 3}
       propertyPath: m_Name
-      value: snowT
+      value: EnergyBar3_StaRT
       objectReference: {fileID: 0}
     - target: {fileID: 7121536914770427189, guid: 6e808aa8817285847b440f19399a1a8e,
         type: 3}
@@ -36935,7 +36962,7 @@ Transform:
   m_Children:
   - {fileID: 876464675}
   m_Father: {fileID: 1999206084}
-  m_RootOrder: 452
+  m_RootOrder: 453
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804819576
 PrefabInstance:
@@ -40458,9 +40485,9 @@ Transform:
   - {fileID: 1706103423}
   - {fileID: 1816734288}
   - {fileID: 686128545}
+  - {fileID: 817999023}
   - {fileID: 2113061806}
   - {fileID: 1801684720}
-  - {fileID: 817999023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42717,7 +42744,7 @@ Transform:
   m_Children:
   - {fileID: 1694497333}
   m_Father: {fileID: 1999206084}
-  m_RootOrder: 451
+  m_RootOrder: 452
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2114575469
 PrefabInstance:
