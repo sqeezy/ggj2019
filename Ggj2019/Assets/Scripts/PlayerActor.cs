@@ -9,18 +9,18 @@ public enum UpgradeState
 
 public class PlayerActor : PlayerMovementController
 {
-	public event Action EnteredHomeWithUpgrade;
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
 	public int CurrentEnergy;
-
-	public bool IsRobot;
 	public bool ForceUpgrade;
 	public int FullEnergy;
+
+	public bool IsRobot;
 	public int MaxEnergy;
 
 	public MainUI UI;
+	public event Action EnteredHomeWithUpgrade;
 
 	private void FixedUpdate()
 	{
@@ -47,8 +47,12 @@ public class PlayerActor : PlayerMovementController
 
 	protected override void UpdateTile(Tile nextPoint)
 	{
+		if (nextPoint != PositionTile)
+		{
+			CurrentEnergy--;
+		}
+
 		base.UpdateTile(nextPoint);
-		CurrentEnergy--;
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
 			RefillToFull();
@@ -78,6 +82,12 @@ public class PlayerActor : PlayerMovementController
 		}
 	}
 
+
+	private void UpgradeEnergy()
+	{
+		FullEnergy = Math.Min(FullEnergy + 8, MaxEnergy);
+	}
+
 	private void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
@@ -85,6 +95,7 @@ public class PlayerActor : PlayerMovementController
 
 	public void Upgrade()
 	{
+		UpgradeEnergy();
 		switch (ActiveUpgrade)
 		{
 			case UpgradeState.NoUpgrade:
