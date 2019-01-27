@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-	public event Action<Tile, Tile> SelectedTileChanged;
-
 	public PlayerActor RobotActor;
 	public PlayerActor CowboyActor;
 	
@@ -15,24 +13,6 @@ public class GameState : MonoBehaviour
 
 	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
-
-	private Tile _selectedTile;
-
-	public Tile SelectedTile
-	{
-		get => _selectedTile;
-		set
-		{
-			if (_selectedTile == value)
-			{
-				return;
-			}
-
-			var oldSelection = _selectedTile;
-			_selectedTile = value;
-			SelectedTileChanged.Raise(oldSelection, _selectedTile);
-		}
-	}
 
 	private void Start()
 	{
