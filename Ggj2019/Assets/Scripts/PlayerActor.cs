@@ -12,6 +12,7 @@ public class PlayerActor : PlayerMovementController
 	public PickupableActor CarriedPickupableActor;
 	public int CurrentEnergy;
 
+	public bool IsRobot;
 	public bool ForceUpgrade;
 	public int FullEnergy;
 	public int MaxEnergy;
@@ -45,12 +46,29 @@ public class PlayerActor : PlayerMovementController
 	{
 		base.UpdateTile(nextPoint);
 		CurrentEnergy--;
+		if (nextPoint.GetComponent<HomeArea>() != null)
+		{
+			RefillToFull();
+		}
+
+		UpdateEnergyUi();
 	}
 
-	public void RefillToFull()
+	private void UpdateEnergyUi()
+	{
+		if (IsRobot)
+		{
+			UI.SetBlueBar(CurrentEnergy);
+		}
+		else
+		{
+			UI.SetRedBar(CurrentEnergy);
+		}
+	}
+
+	private void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
-		UI.SetBlueBar(CurrentEnergy);
 	}
 
 	public void Upgrade()
