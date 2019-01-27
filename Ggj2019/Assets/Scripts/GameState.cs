@@ -31,7 +31,7 @@ public class GameState : MonoBehaviour
 	{
 		if(ActiveActor.GetComponentInChildren<SmallRobot>() is SmallRobot robi)
 		{
-			robi.FlyAndBite(ActiveActor, obj);
+			robi.BiteOrSteal(ActiveActor, obj);
 		}
 	}
 

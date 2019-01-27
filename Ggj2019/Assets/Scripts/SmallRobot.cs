@@ -2,24 +2,45 @@ using UnityEngine;
 
 public class SmallRobot : PlayerActor
 {
+	public Ability _activeAbility;
+	private bool _attacking;
 	private Vector3 _parentPosition;
-	private bool _push;
 	private bool _returning;
-	private Vector3 _targetPosition;
-	public PickUpAbility PickUpAbility;
-	public PushAbility Push;
 	private GameObject _target;
+	private Vector3 _targetPosition;
+	public PickUpAbility Pick;
+	public PushAbility Push;
+	private PlayerActor _parent;
 
 	protected override void Start()
 	{
 	}
 
-	public void FlyAndBite(PlayerActor activeActor, GameObject target)
+	public void BiteOrSteal(PlayerActor activeActor, GameObject target)
 	{
-		_parentPosition = activeActor.transform.position;
+		if (target.GetComponent<PushableActor>())
+		{
+			_activeAbility = Push;
+			Armed(activeActor, target);
+		}
+		else
+		{
+			if (target == activeActor)
+			{
+				return;
+			}
+			_activeAbility = Pick;
+			Armed(activeActor, target);
+		}
+	}
+
+	private void Armed(PlayerActor activeActor, GameObject target)
+	{
+		_parent = activeActor;
+		_parentPosition = _parent.transform.position;
 		var direction = target.transform.position - _parentPosition;
 
-		_push = true;
+		_attacking = true;
 		_returning = false;
 		_targetPosition = transform.position + direction.normalized * 2;
 		_target = target;
@@ -27,7 +48,7 @@ public class SmallRobot : PlayerActor
 
 	private void Update()
 	{
-		if (_push || _returning)
+		if (_attacking || _returning)
 		{
 			_targetPosition.z = transform.position.z;
 			var currentDirection = _targetPosition - transform.position;
@@ -35,14 +56,19 @@ public class SmallRobot : PlayerActor
 
 			if (currentDistance <= 0.1f)
 			{
-				if (_push)
+				if (_attacking)
 				{
-					Push.Do(_target);
-					_push = false;
+					_activeAbility.Do(_target);
+					_attacking = false;
 				}
 
 				_returning = !_returning;
 				_targetPosition = _parentPosition;
+				if (!(_attacking || _returning) && _activeAbility == Pick)
+				{
+					_parent.CarriedPickupableActor = CarriedPickupableActor;
+					CarriedPickupableActor = null;
+				}
 				return;
 			}
 

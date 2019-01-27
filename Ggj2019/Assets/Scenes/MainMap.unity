@@ -33539,7 +33539,7 @@ PrefabInstance:
     - target: {fileID: 6663496139405988946, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6663496139405988910, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
@@ -42361,6 +42361,9 @@ GameObject:
   - component: {fileID: 2040450048}
   - component: {fileID: 2040450046}
   - component: {fileID: 2040450047}
+  - component: {fileID: 2040450051}
+  - component: {fileID: 2040450053}
+  - component: {fileID: 2040450052}
   m_Layer: 0
   m_Name: Robot_Small_Idle_00000
   m_TagString: Untagged
@@ -42395,7 +42398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyAmount: 0
-  AnimationController: {fileID: 0}
+  AnimationController: {fileID: 2040450052}
   AnimationOffset: 0
 --- !u!114 &2040450047
 MonoBehaviour:
@@ -42417,7 +42420,7 @@ MonoBehaviour:
   Speed: 0.5
   StartPosition: {fileID: 0}
   ActiveUpgrade: 0
-  AnimationController: {fileID: 0}
+  AnimationController: {fileID: 2040450052}
   CarriedPickupableActor: {fileID: 0}
   Blizzard: {fileID: 0}
   CurrentEnergy: 4
@@ -42426,7 +42429,8 @@ MonoBehaviour:
   IsRobot: 0
   MaxEnergy: 4
   UI: {fileID: 1584654048}
-  PickUpAbility: {fileID: 0}
+  _activeAbility: {fileID: 0}
+  Pick: {fileID: 2040450051}
   Push: {fileID: 2040450046}
 --- !u!65 &2040450048
 BoxCollider:
@@ -42501,6 +42505,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2040450051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040450044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c93cf343cbf43eeb4d7b68c90c583d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyAmount: 0
+  AnimationController: {fileID: 2040450052}
+--- !u!114 &2040450052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040450044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341bde56fe9814fa8a83285d942f32f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationController: {fileID: 2040450053}
+  Upgrade1Controller: {fileID: 0}
+  Upgrade2Controller: {fileID: 0}
+  AnimationData:
+    BasicAbility: Idle
+    SecondaryAbility: Carry
+    ThirdAbility: 
+    Move: Walk
+    Idle: Idle
+--- !u!95 &2040450053
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040450044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 056e7baf2ca7a4819850ec2747373773, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2044375510
 PrefabInstance:
   m_ObjectHideFlags: 0
