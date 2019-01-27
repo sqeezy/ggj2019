@@ -16,16 +16,11 @@ public class GameState : MonoBehaviour
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectPickupActionCalled += InputOnGameObjectPickupActionCalled;
-		Input.RobotRock += InputOnRobotRock;
 		Input.DropActionCalled += InputDropActionCalled;
 		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CurrentEnergy = StartEnergy;
 		ActiveActor.EnergyConsumed += ReduceEnergy;
-	}
-
-	private void InputOnRobotRock(GameObject obj)
-	{
 	}
 
 	private void InputDropActionCalled(GameObject obj)

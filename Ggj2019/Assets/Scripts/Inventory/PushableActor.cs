@@ -21,7 +21,6 @@ public class PushableActor : PlayerMovementController
 
 	public override void TargetConfirmed(Tile tile)
 	{
-		var pushableItemOnTarget = false; // get pushable on tile
 		if (AnimationController != null)
 		{
 			AnimationController.SetTrigger("Move");
