@@ -4,13 +4,13 @@ public class SmallRobot : PlayerActor
 {
 	public Ability _activeAbility;
 	private bool _attacking;
+	private PlayerActor _parent;
 	private Vector3 _parentPosition;
 	private bool _returning;
 	private GameObject _target;
 	private Vector3 _targetPosition;
 	public PickUpAbility Pick;
 	public PushAbility Push;
-	private PlayerActor _parent;
 
 	protected override void Start()
 	{
@@ -22,6 +22,7 @@ public class SmallRobot : PlayerActor
 		{
 			_activeAbility = Push;
 			Armed(activeActor, target);
+			AnimationController.Move();
 		}
 		else
 		{
@@ -29,6 +30,7 @@ public class SmallRobot : PlayerActor
 			{
 				return;
 			}
+
 			_activeAbility = Pick;
 			Armed(activeActor, target);
 		}
@@ -44,6 +46,7 @@ public class SmallRobot : PlayerActor
 		_returning = false;
 		_targetPosition = transform.position + direction.normalized * 2;
 		_target = target;
+		AnimationController.Move();
 	}
 
 	private void Update()
@@ -59,16 +62,22 @@ public class SmallRobot : PlayerActor
 				if (_attacking)
 				{
 					_activeAbility.Do(_target);
+					AnimationController.Move();
 					_attacking = false;
 				}
 
 				_returning = !_returning;
 				_targetPosition = _parentPosition;
-				if (!(_attacking || _returning) && _activeAbility == Pick)
+				if (!(_attacking || _returning))
 				{
-					_parent.CarriedPickupableActor = CarriedPickupableActor;
-					CarriedPickupableActor = null;
+					AnimationController.Idle();
+					if (_activeAbility == Pick)
+					{
+						_parent.CarriedPickupableActor = CarriedPickupableActor;
+						CarriedPickupableActor = null;
+					}
 				}
+
 				return;
 			}
 
