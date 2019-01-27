@@ -94,7 +94,6 @@ public class PlayerActor : PlayerMovementController
 				AnimationController.Reset();
 				AnimationController.Idle();
 				EnteredHomeWithShipUpgrades.Raise();
-				EnteredHomeWithUpgrade.Raise();
 			}
 		}
 		else
