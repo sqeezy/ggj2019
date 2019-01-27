@@ -26896,6 +26896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeatherController
       objectReference: {fileID: 0}
+    - target: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26951,10 +26956,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
+    - target: {fileID: 4001818381789336799, guid: 6afe0408c72814340848d0faf1d7b7a1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001818381789336799, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6afe0408c72814340848d0faf1d7b7a1, type: 3}
@@ -31955,38 +31965,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cowboy
       objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: WalkOnGrid
-      value: 
-      objectReference: {fileID: 507876546}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: StartPosition
-      value: 
-      objectReference: {fileID: 2000629155}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: Speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1584654048}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: FullEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: MaxEnergy
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: CurrentEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
-      propertyPath: Blizzard
-      value: 
-      objectReference: {fileID: 1265554970}
     - target: {fileID: 5245212956927963699, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32042,6 +32020,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: WalkOnGrid
+      value: 
+      objectReference: {fileID: 507876546}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: StartPosition
+      value: 
+      objectReference: {fileID: 2000629155}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1584654048}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: FullEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: MaxEnergy
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: CurrentEnergy
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 1265554970}
     - target: {fileID: 8581749601340397818, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: Upgrade1Controller
@@ -33665,6 +33675,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 429
+      objectReference: {fileID: 0}
     - target: {fileID: 6663496139802595997, guid: 0001a6c56bdee4926b1af192a880366a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -33714,21 +33739,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: -18.527344
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6663496139833016617, guid: 0001a6c56bdee4926b1af192a880366a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 429
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0001a6c56bdee4926b1af192a880366a, type: 3}
@@ -37632,6 +37642,11 @@ PrefabInstance:
       propertyPath: Y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5459985477366157991, guid: f2bb138ae01df564f981860d465cfced,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7121536914770427189, guid: f2bb138ae01df564f981860d465cfced,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37686,11 +37701,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5459985477366157991, guid: f2bb138ae01df564f981860d465cfced,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2bb138ae01df564f981860d465cfced, type: 3}

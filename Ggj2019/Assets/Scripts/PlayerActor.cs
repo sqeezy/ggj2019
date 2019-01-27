@@ -129,6 +129,7 @@ public class PlayerActor : PlayerMovementController
 	public void RefillToFull()
 	{
 		CurrentEnergy = FullEnergy;
+		StopAllCoroutines();
 		enabled = true;
 		UpdateEnergyUi();
 	}
