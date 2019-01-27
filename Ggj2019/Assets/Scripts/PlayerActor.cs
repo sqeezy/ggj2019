@@ -47,8 +47,11 @@ public class PlayerActor : PlayerMovementController
 
 	protected override void UpdateTile(Tile nextPoint)
 	{
+		if (nextPoint != PositionTile)
+		{
+			CurrentEnergy--;
+		}
 		base.UpdateTile(nextPoint);
-		CurrentEnergy--;
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
 			RefillToFull();
