@@ -10108,6 +10108,11 @@ PrefabInstance:
       propertyPath: CurrentEnergy
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 867864565}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: StartPosition
@@ -13950,12 +13955,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -13982,6 +13981,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -16658,12 +16663,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -16690,6 +16689,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
@@ -17996,6 +18001,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7121536914770427189, guid: fd72d6e801cbb414a81666a9f7dec1fb,
     type: 3}
   m_PrefabInstance: {fileID: 864523656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &867864565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1193263039}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &875064139
 PrefabInstance:
@@ -24371,6 +24382,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1193050660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1193263039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5966564851271065916, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_Name
+      value: WeatherController
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.66499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.275457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.359375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719459966651029246, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6afe0408c72814340848d0faf1d7b7a1, type: 3}
 --- !u!1001 &1194499880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30955,6 +31040,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cowboy
       objectReference: {fileID: 0}
+    - target: {fileID: 5245212956927963700, guid: 33179242422a143438d1235ea7044466,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5245212956927963699, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31038,6 +31128,10 @@ PrefabInstance:
       propertyPath: CurrentEnergy
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 42703109, guid: 33179242422a143438d1235ea7044466, type: 3}
+      propertyPath: Blizzard
+      value: 
+      objectReference: {fileID: 867864565}
     - target: {fileID: 8581749601340397818, guid: 33179242422a143438d1235ea7044466,
         type: 3}
       propertyPath: Upgrade1Controller
@@ -35603,12 +35697,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
-        type: 3}
     - target: {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b,
         type: 3}
       propertyPath: WalkOnGrid
@@ -35635,6 +35723,12 @@ PrefabInstance:
       propertyPath: BlocksMovement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3732325847646598234, guid: a869830cb770c40cf8b5803e75895c2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6ce1e7c76daa664a8748f8ba0b14032,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 142448068688459544, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a869830cb770c40cf8b5803e75895c2b, type: 3}

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public enum UpgradeState
 {
@@ -12,6 +13,7 @@ public class PlayerActor : PlayerMovementController
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
+	public GameObject Blizzard;
 	public int CurrentEnergy;
 	public bool ForceUpgrade;
 	public int FullEnergy;
@@ -62,6 +64,7 @@ public class PlayerActor : PlayerMovementController
 		base.UpdateTile(nextPoint);
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
+			Blizzard.SetActive(false);
 			RefillToFull();
 
 			if (CarriedPickupableActor != null && CarriedPickupableActor.UpgradesPlayerActors)
@@ -72,6 +75,10 @@ public class PlayerActor : PlayerMovementController
 				AnimationController.Idle();
 				EnteredHomeWithUpgrade.Raise();
 			}
+		}
+		else
+		{
+			Blizzard.SetActive(true);
 		}
 
 		UpdateEnergyUi();
