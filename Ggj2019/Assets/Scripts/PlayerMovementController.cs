@@ -162,7 +162,7 @@ public class PlayerMovementController : Actor
 	public override void TargetClicked(Tile target)
 	{
 		HighlightPath(false);
-		Path = WalkOnGrid.GetPath(PositionTile, target).Skip(1);
+		Path = WalkOnGrid.GetPath(PositionTile, target);
 		HighlightPath(true);
 	}
 
