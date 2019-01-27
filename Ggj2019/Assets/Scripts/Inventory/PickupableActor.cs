@@ -1,12 +1,18 @@
 ﻿public class PickupableActor : PlayerMovementController
 {
-	public void PickUp()
+	public string CarryAnimationName;
+	public string IdleAnimationName;
+	public bool UpgradesPlayerActors;
+	public bool UpgradeShipActors; 
+
+	public virtual void PickUp()
 	{
-		// gameobject -> inactive
-		// store 
+		gameObject.SetActive(false);
+		
 	}
 
-	public void Drop()
+	public virtual void Drop()
 	{
+		gameObject.SetActive(true);
 	}
 }

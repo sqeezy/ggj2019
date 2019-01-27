@@ -11,12 +11,12 @@ public class PlayerMovementController : Actor
 	private int NextWayPointIndex;
 	public float Speed;
 	public Tile StartPosition;
-	private Tile[] WaypointList;
+	protected Tile[] WaypointList;
 
 	public bool HasPath
 	{
 		get => _hasPath;
-		private set
+		protected set
 		{
 			_hasPath = value;
 			OnHasPathUpdated();
@@ -30,7 +30,7 @@ public class PlayerMovementController : Actor
 	}
 
 
-	protected virtual void Start()
+	protected override void Start()
 	{
 		base.Start();
 		var pos = StartPosition.transform.position;

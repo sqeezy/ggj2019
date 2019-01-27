@@ -2,7 +2,8 @@
 
 public class PushableActor : PlayerMovementController
 {
-	public void Push(Vector3 direction)
+	public Animator AnimationController;
+	public void Push(Vector3 direction) 
 	{
 		var target = new Vector2Int(PositionTile.X + (int) direction.x, PositionTile.Y + (int) direction.y);
 		var targetTile = WalkOnGrid.Grid[target.x, target.y];
@@ -20,8 +21,13 @@ public class PushableActor : PlayerMovementController
 
 	public override void TargetConfirmed(Tile tile)
 	{
-		var pushableItemOnTarget = false; // get pushable on tile
+		if (AnimationController != null)
+		{
+			AnimationController.SetTrigger("Move");
+		}
+
 		base.TargetConfirmed(tile);
+		
 		// coroutine -> reached adjacent tile -> push
 	}
 }

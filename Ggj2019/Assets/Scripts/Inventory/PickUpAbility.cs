@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Xml.Xsl;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerActor))]
 public class PickUpAbility : Ability
 {
+	public CharacterAnimation AnimationController;
+	
 	public override void Do(GameObject targetPickupable)
 	{
 		if (GetComponent<PlayerActor>().CarriedPickupableActor == null)
@@ -11,10 +14,11 @@ public class PickUpAbility : Ability
 			if (pickupable != null)
 			{
 				pickupable.PositionTile.Walkable = true;
-				pickupable.gameObject.SetActive(false);
+				pickupable.PickUp();
 				GetComponent<PlayerActor>().CarriedPickupableActor = pickupable;
-
-				//TODO: hide gameobject, make tile walkable, trigger animation...
+				AnimationController.AnimationData.Move = pickupable.CarryAnimationName;
+				AnimationController.AnimationData.Idle = pickupable.IdleAnimationName;
+				AnimationController.Idle();
 			}
 		}
 	}
