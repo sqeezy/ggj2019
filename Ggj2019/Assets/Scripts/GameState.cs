@@ -1,16 +1,22 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
 	public List<GameObject> HomeSweetHome;
+	public List<GameObject> HomeSweetHomeDisable;
 	public int CurrentUpgradeStep;
 	public PlayerActor ActiveActor;
 	public PlayerActor CowboyActor;
 	public MapInput Input;
 	public Map MapState;
 	public PlayerActor RobotActor;
+	public GameObject Blizzard;
 
+	public List<SpriteRenderer> ShipForDoomsDay;
+	
 	public int StartEnergy;
 	public MainUI UI;
 	public int CurrentEnergy { get; set; }
@@ -33,8 +39,21 @@ public class GameState : MonoBehaviour
 		CurrentUpgradeStep++;
 		for (int i = 0; i < CurrentUpgradeStep && i < HomeSweetHome.Count; i++)
 		{
-			HomeSweetHome[i].SetActive(true);
+			if (HomeSweetHomeDisable[i] != null)
+			{
+				HomeSweetHome[i].SetActive(true);
+			}
 		}
+		
+		for (int i = 0; i < CurrentUpgradeStep && i < HomeSweetHomeDisable.Count; i++)
+		{
+			if (HomeSweetHomeDisable[i]!= null)
+			{
+				HomeSweetHomeDisable[i].SetActive(false);
+			}
+		}
+		
+		
 	}
 
 	private void InputDropActionCalled(GameObject obj)
@@ -59,6 +78,42 @@ public class GameState : MonoBehaviour
 	{
 		CurrentEnergy -= amount;
 		UI.SetShipBar(CurrentEnergy, StartEnergy);
+		if (CurrentEnergy <= 0)
+		{
+			StartCoroutine(DoomsDay());
+		}
+	}
+
+	private IEnumerator DoomsDay()
+	{
+		Input.enabled = false;
+		Blizzard.gameObject.SetActive(true);
+		var system = Blizzard.GetComponent<ParticleSystem>();
+		foreach (var spriteRenderer in ShipForDoomsDay)
+		{
+			var clr = spriteRenderer.color;
+			clr.a = 0;
+			
+		}
+		float time = 6;
+		while (time>=0)
+		{
+			Blizzard.gameObject.SetActive(true);
+			system.emissionRate += 100;
+			system.startSize += 0.0015f;
+			time -= 0.05f;
+			foreach (var spriteRenderer in ShipForDoomsDay)
+			{
+				var clr = spriteRenderer.color; 
+				clr.a += 0.05f;
+				spriteRenderer.color = clr; 
+			}
+			
+			
+			yield return new WaitForSeconds(0.05f);
+		}
+
+		SceneManager.LoadScene("MainMap");
 	}
 
 	private void InputOnGameObjectPickupActionCalled(GameObject obj)
