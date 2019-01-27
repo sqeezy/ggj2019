@@ -21,5 +21,6 @@ public class DropAbility : Ability
 		carriedPickupableActor.gameObject.SetActive(true);
 		playerActor.CarriedPickupableActor = null;
 		AnimationController.Reset();
+		AnimationController.Idle();
 	}
 }
