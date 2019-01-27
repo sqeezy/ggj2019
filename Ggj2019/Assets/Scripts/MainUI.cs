@@ -9,23 +9,19 @@ public class MainUI : MonoBehaviour
 	public Image RedBar;
 	public Image ShipBar;
 
-	public int ShipMax;
-	public int BlueBarMax;
-	public int RedBarMax; 
-
-	public void SetBlueBar(int value)
+	public void SetBlueBar(int value, int max)
 	{
-		BlueBar.fillAmount = remap(value, 0, BlueBarMax, 0, 1);
+		BlueBar.fillAmount = remap(value, 0, max, 0, 1);
 	}
 
-	public void SetShipBar(int value)
+	public void SetShipBar(int value, int max)
 	{
-		ShipBar.fillAmount = remap(value, 0, ShipMax, 0, 1);
+		ShipBar.fillAmount = remap(value, 0, max, 0, 1);
 	}
 
-	public void SetRedBar(int value)
+	public void SetRedBar(int value, int max)
 	{
-		RedBar.fillAmount = remap(value, 0, RedBarMax, 0, 1);
+		RedBar.fillAmount = remap(value, 0, max, 0, 1);
 	}
 
 	float remap(float s, float oldLow, float oldHigh, float newLow, float newHigh)

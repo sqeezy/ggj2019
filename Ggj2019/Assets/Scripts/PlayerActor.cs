@@ -47,8 +47,11 @@ public class PlayerActor : PlayerMovementController
 
 	protected override void UpdateTile(Tile nextPoint)
 	{
+		if (nextPoint != PositionTile)
+		{
+			CurrentEnergy--;
+		}
 		base.UpdateTile(nextPoint);
-		CurrentEnergy--;
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
 			RefillToFull();
@@ -70,11 +73,11 @@ public class PlayerActor : PlayerMovementController
 	{
 		if (IsRobot)
 		{
-			UI.SetBlueBar(CurrentEnergy);
+			UI.SetBlueBar(CurrentEnergy, FullEnergy);
 		}
 		else
 		{
-			UI.SetRedBar(CurrentEnergy);
+			UI.SetRedBar(CurrentEnergy, FullEnergy);
 		}
 	}
 
