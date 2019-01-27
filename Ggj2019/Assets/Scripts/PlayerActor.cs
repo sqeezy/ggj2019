@@ -142,6 +142,10 @@ public class PlayerActor : PlayerMovementController
 			case UpgradeState.NoUpgrade:
 				AnimationController.Upgrade();
 				ActiveUpgrade = UpgradeState.Upgrade1;
+				if (GetComponentInChildren<SmallRobot>(true) is SmallRobot robot)
+				{
+					robot.gameObject.SetActive(true);
+				}
 				break;
 			case UpgradeState.Upgrade1:
 				AnimationController.Upgrade();
