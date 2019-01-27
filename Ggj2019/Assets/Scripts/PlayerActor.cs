@@ -57,6 +57,8 @@ public class PlayerActor : PlayerMovementController
 			{
 				var tmp = CarriedPickupableActor;
 				Destroy(tmp.gameObject);
+				AnimationController.Reset();
+				AnimationController.Idle();
 				EnteredHomeWithUpgrade.Raise();
 			}
 		}
