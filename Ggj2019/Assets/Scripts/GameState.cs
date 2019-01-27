@@ -39,7 +39,7 @@ public class GameState : MonoBehaviour
 		CurrentUpgradeStep++;
 		for (int i = 0; i < CurrentUpgradeStep && i < HomeSweetHome.Count; i++)
 		{
-			if (HomeSweetHomeDisable[i] != null)
+			if (HomeSweetHome[i] != null)
 			{
 				HomeSweetHome[i].SetActive(true);
 			}
