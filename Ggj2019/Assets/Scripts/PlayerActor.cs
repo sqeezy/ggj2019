@@ -13,6 +13,8 @@ public enum UpgradeState
 
 public class PlayerActor : PlayerMovementController
 {
+	public GameObject CowboyUpgradeParticleEffect;
+	public GameObject RobotUpgradeParticleEffect;
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
@@ -92,7 +94,6 @@ public class PlayerActor : PlayerMovementController
 				AnimationController.Reset();
 				AnimationController.Idle();
 				EnteredHomeWithShipUpgrades.Raise();
-				EnteredHomeWithUpgrade.Raise();
 			}
 		}
 		else
@@ -157,10 +158,38 @@ public class PlayerActor : PlayerMovementController
 				{
 					robot.gameObject.SetActive(true);
 				}
+				else if (IsRobot)
+				{
+					if (RobotUpgradeParticleEffect != null)
+					{
+						RobotUpgradeParticleEffect.SetActive(true);
+					}
+				}
+				else
+				{
+					if (CowboyUpgradeParticleEffect != null)
+					{
+						CowboyUpgradeParticleEffect.SetActive(true);
+					}
+				}
 				break;
 			case UpgradeState.Upgrade1:
 				AnimationController.Upgrade();
 				ActiveUpgrade = UpgradeState.Upgrade2;
+				if (IsRobot)
+				{
+					if (RobotUpgradeParticleEffect != null)
+					{
+						RobotUpgradeParticleEffect.SetActive(true);
+					}
+				}
+				else
+				{
+					if (CowboyUpgradeParticleEffect != null)
+					{
+						CowboyUpgradeParticleEffect.SetActive(true);
+					}
+				}
 				break;
 			case UpgradeState.Upgrade2:
 				break;
