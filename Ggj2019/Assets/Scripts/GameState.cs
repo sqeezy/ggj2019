@@ -4,6 +4,9 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
 	public event Action<Tile, Tile> SelectedTileChanged;
+
+	public PlayerActor RobotActor;
+	public PlayerActor CowboyActor;
 	
 	public PlayerActor ActiveActor;
 	public MapInput Input;
@@ -36,6 +39,8 @@ public class GameState : MonoBehaviour
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectPushActionCalled += InputOnGameObjectPushActionCalled;
 		Input.DropActionCalled += InputDropActionCalled;
+		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
+		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CurrentEnergy = StartEnergy;
 	}
 
@@ -111,5 +116,16 @@ public class GameState : MonoBehaviour
 		}
 	}
 
-	
+	private void OnEnteredHomeWithUpgrade()
+	{
+		if ((int) CowboyActor.ActiveUpgrade <= (int) RobotActor.ActiveUpgrade)
+		{
+			CowboyActor.Upgrade();
+		}
+		else
+		{
+			RobotActor.Upgrade();
+		}
+	}
+
 }

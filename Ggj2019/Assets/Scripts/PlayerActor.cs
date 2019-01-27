@@ -1,4 +1,6 @@
-﻿public enum UpgradeState
+﻿using System;
+
+public enum UpgradeState
 {
 	NoUpgrade,
 	Upgrade1,
@@ -7,6 +9,7 @@
 
 public class PlayerActor : PlayerMovementController
 {
+	public event Action EnteredHomeWithUpgrade;
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
@@ -49,6 +52,13 @@ public class PlayerActor : PlayerMovementController
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
 			RefillToFull();
+
+			if (CarriedPickupableActor != null && CarriedPickupableActor.UpgradesPlayerActors)
+			{
+				var tmp = CarriedPickupableActor;
+				Destroy(tmp.gameObject);
+				EnteredHomeWithUpgrade.Raise();
+			}
 		}
 
 		UpdateEnergyUi();
