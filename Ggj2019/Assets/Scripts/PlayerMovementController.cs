@@ -30,7 +30,7 @@ public class PlayerMovementController : Actor
 	}
 
 
-	protected virtual void Start()
+	protected override void Start()
 	{
 		base.Start();
 		var pos = StartPosition.transform.position;

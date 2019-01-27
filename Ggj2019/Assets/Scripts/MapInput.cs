@@ -10,10 +10,6 @@ public class MapInput : MonoBehaviour
 
 	public event Action<GameObject> GameObjectPickupActionCalled;
 
-	public event Action<GameObject> GameObjectPickUpActionCalled;
-
-	public event Action<GameObject> RobotRock;
-
 	public event Action<GameObject> DropActionCalled;
 
 	private void Update()
