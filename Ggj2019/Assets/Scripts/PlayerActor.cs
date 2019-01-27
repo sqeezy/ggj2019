@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = System.Object;
 
 public enum UpgradeState
 {
@@ -12,6 +16,7 @@ public class PlayerActor : PlayerMovementController
 	public UpgradeState ActiveUpgrade;
 	public CharacterAnimation AnimationController;
 	public PickupableActor CarriedPickupableActor;
+	public GameObject Blizzard;
 	public int CurrentEnergy;
 	public bool ForceUpgrade;
 	public int FullEnergy;
@@ -52,16 +57,22 @@ public class PlayerActor : PlayerMovementController
 			CurrentEnergy--;
 			if (CurrentEnergy <= 0)
 			{
+
 				HasPath = false;
 				WaypointList = new Tile[0];
 				StopAllCoroutines();
 				enabled = false;
+				if (!IsRobot)
+				{
+					StartCoroutine(IncreaseBlizzard());
+				}
 			}
 		}
 
 		base.UpdateTile(nextPoint);
 		if (nextPoint.GetComponent<HomeArea>() != null)
 		{
+			Blizzard.SetActive(false);
 			RefillToFull();
 
 			if (CarriedPickupableActor != null && CarriedPickupableActor.UpgradesPlayerActors)
@@ -73,8 +84,28 @@ public class PlayerActor : PlayerMovementController
 				EnteredHomeWithUpgrade.Raise();
 			}
 		}
+		else
+		{
+			Blizzard.SetActive(true);
+		}
 
 		UpdateEnergyUi();
+	}
+
+	public IEnumerator IncreaseBlizzard()
+	{
+		float time = 4;
+		while (time>=0)
+		{
+			time -= 0.05f;
+			var system = Blizzard.GetComponent<ParticleSystem>();
+			system.emissionRate += 1000;
+			system.startSize += 0.005f;
+			yield return new WaitForSeconds(0.05f);
+			
+		}
+
+		SceneManager.LoadScene("MainMap");
 	}
 
 	private void UpdateEnergyUi()
