@@ -11,7 +11,7 @@ public class PushAbility : Ability
 		var actor = targetTile.GetComponent<PushableActor>();
 		if (actor != null)
 		{
-			var direction = actor.transform.position - transform.position;
+			var direction = (actor.transform.position - transform.position).normalized;
 			StopAllCoroutines();
 			StartCoroutine(WaitForPush(actor, direction));
 			var scale = transform.localScale;

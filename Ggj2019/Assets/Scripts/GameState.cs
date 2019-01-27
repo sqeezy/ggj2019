@@ -1,10 +1,9 @@
 using System;
+using DefaultNamespace;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-	public event Action<Tile, Tile> SelectedTileChanged;
-
 	public PlayerActor RobotActor;
 	public PlayerActor CowboyActor;
 	
@@ -16,33 +15,24 @@ public class GameState : MonoBehaviour
 	public int StartEnergy;
 	public int CurrentEnergy { get; set; }
 
-	private Tile _selectedTile;
-
-	public Tile SelectedTile
-	{
-		get => _selectedTile;
-		set
-		{
-			if (_selectedTile == value)
-			{
-				return;
-			}
-
-			var oldSelection = _selectedTile;
-			_selectedTile = value;
-			SelectedTileChanged.Raise(oldSelection, _selectedTile);
-		}
-	}
-
 	private void Start()
 	{
 		Input.GameObjectClicked += InputOnGameObjectClicked;
 		Input.GameObjectPickupActionCalled += InputOnGameObjectPickupActionCalled;
+		Input.RobotRock += InputOnRobotRock;
 		Input.DropActionCalled += InputDropActionCalled;
 		RobotActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CowboyActor.EnteredHomeWithUpgrade += OnEnteredHomeWithUpgrade;
 		CurrentEnergy = StartEnergy;
         ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void InputOnRobotRock(GameObject obj)
+	{
+		if(ActiveActor.GetComponentInChildren<SmallRobot>() is SmallRobot robi)
+		{
+			robi.BiteOrSteal(ActiveActor, obj);
+		}
 	}
 
 	private void InputDropActionCalled()
@@ -74,47 +64,53 @@ public class GameState : MonoBehaviour
 
 	private void InputOnGameObjectClicked(GameObject obj)
 	{
+
+
 		if (obj.GetComponent<Tile>() is Tile tile)
 		{
-			if (ActiveActor == null)
-			{
-				return;
-			}
-			/* //Confirmation.
-			if (SelectedTile == tile)
-			{
-				ActiveActor.TargetConfirmed(tile);
-			}
-			else
-			{
-				SelectedTile = tile;
-				ActiveActor.TargetClicked(tile);
-			}
-			*/
-			ActiveActor.TargetClicked(tile);
-			ActiveActor.TargetConfirmed(tile);
-
+			ClickTileOnActiveActor(tile);
 		}
 		else if (obj.GetComponent<PlayerActor>() is PlayerActor actor)
 		{
-			if (ActiveActor != null)
-			{
-				ActiveActor.EnergyConsumed -= ReduceEnergy;
-				ActiveActor.Deselect();
-			}
-
-			ActiveActor = actor;
-			ActiveActor.EnergyConsumed += ReduceEnergy;
+			SelectNewActiveActor(actor);
 		}
 		else if (obj.GetComponent<PushableActor>())
 		{
-			if (ActiveActor == null)
-			{
-				return;
-			}
-
-			ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
+			ActivatePrimaryOnActive(obj);
 		}
+	}
+
+	private void ActivatePrimaryOnActive(GameObject obj)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.ActivatePrimaryAbility(ActiveActor, obj);
+	}
+
+	private void SelectNewActiveActor(PlayerActor actor)
+	{
+		if (ActiveActor != null)
+		{
+			ActiveActor.EnergyConsumed -= ReduceEnergy;
+			ActiveActor.Deselect();
+		}
+
+		ActiveActor = actor;
+		ActiveActor.EnergyConsumed += ReduceEnergy;
+	}
+
+	private void ClickTileOnActiveActor(Tile tile)
+	{
+		if (ActiveActor == null)
+		{
+			return;
+		}
+
+		ActiveActor.TargetClicked(tile);
+		ActiveActor.TargetConfirmed(tile);
 	}
 
 	private void OnEnteredHomeWithUpgrade()

@@ -10120,67 +10120,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
-      propertyPath: StartPosition
-      value: 
-      objectReference: {fileID: 1719014251}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1584654048}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
       propertyPath: WalkOnGrid
       value: 
       objectReference: {fileID: 507876546}
     - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
-      propertyPath: IsRobot
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
-      propertyPath: FullEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
-      propertyPath: MaxEnergy
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
-      propertyPath: CurrentEnergy
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
-        type: 3}
-      propertyPath: Speed
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: StartPosition
+      value: 
+      objectReference: {fileID: 1719014251}
     - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: Blizzard
       value: 
       objectReference: {fileID: 1265554970}
-    - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+    - target: {fileID: 5267443590253548679, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
-      propertyPath: StartPosition
+      propertyPath: UI
       value: 
-      objectReference: {fileID: 1719014251}
+      objectReference: {fileID: 1584654048}
     - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
         type: 3}
       propertyPath: WalkOnGrid
       value: 
       objectReference: {fileID: 507876546}
-    - target: {fileID: 3893128180708048, guid: 17feeaacb38634c6dbe0e21e2a96d33f, type: 3}
-      propertyPath: Upgrade1Controller
+    - target: {fileID: 1675568324557186139, guid: 17feeaacb38634c6dbe0e21e2a96d33f,
+        type: 3}
+      propertyPath: StartPosition
       value: 
-      objectReference: {fileID: 9100000, guid: d4fae63dc69cb4b648b50f98d5f722e3, type: 2}
-    - target: {fileID: 3893128180708048, guid: 17feeaacb38634c6dbe0e21e2a96d33f, type: 3}
-      propertyPath: Upgrade2Controller
+      objectReference: {fileID: 1719014251}
+    - target: {fileID: 2040450047, guid: 17feeaacb38634c6dbe0e21e2a96d33f, type: 3}
+      propertyPath: WalkOnGrid
       value: 
-      objectReference: {fileID: 9100000, guid: df3ea2a4adbc543e185be494f60d4554, type: 2}
+      objectReference: {fileID: 507876546}
+    - target: {fileID: 2040450047, guid: 17feeaacb38634c6dbe0e21e2a96d33f, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1584654048}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17feeaacb38634c6dbe0e21e2a96d33f, type: 3}
 --- !u!1001 &499706830
@@ -17557,7 +17532,7 @@ PrefabInstance:
     - target: {fileID: 2587457252358589566, guid: f2bb138ae01df564f981860d465cfced,
         type: 3}
       propertyPath: m_Name
-      value: walk1 (1)
+      value: BigRobotStart
       objectReference: {fileID: 0}
     - target: {fileID: 2587457252358589567, guid: f2bb138ae01df564f981860d465cfced,
         type: 3}
@@ -26774,7 +26749,7 @@ PrefabInstance:
     - target: {fileID: 4001818381789336769, guid: 6afe0408c72814340848d0faf1d7b7a1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4001818381789336799, guid: 6afe0408c72814340848d0faf1d7b7a1,
         type: 3}
